@@ -1,10 +1,9 @@
 import React from 'react';
 
-const CustomParagraph = ({ text, fontSize, className }) => {
-  const style = { fontSize: fontSize };
+const CustomParagraph = ({ text, className }) => {
   
   return (
-    <p style={style} className={className}>
+    <p className={className}>
       {text}
     </p>
   );
@@ -13,5 +12,5 @@ const CustomParagraph = ({ text, fontSize, className }) => {
 export default CustomParagraph;
 
 {/* 
-<CustomParagraph text="Questo è un paragrafo" fontSize="16px" className="custom-paragraph" />
+<CustomParagraph text="Questo è un paragrafo" className="****" />
  */}

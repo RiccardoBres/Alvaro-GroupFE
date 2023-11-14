@@ -2,7 +2,7 @@ import React from 'react';
 
 const CustomButton = ({ text, onClick, className }) => {
   return (
-    <button className={`custom-button ${className}`} onClick={onClick}>
+    <button className={className} onClick={onClick}>
       {text}
     </button>
   );
@@ -11,5 +11,5 @@ const CustomButton = ({ text, onClick, className }) => {
 export default CustomButton;
 
 {/*
- <CustomButton text="Clicca Qui" onClick={handleClick} className="custom-button-primary" />
+ <CustomButton text="Clicca Qui" onClick={handleClick} className="****" />
  */}

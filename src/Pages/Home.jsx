@@ -1,10 +1,15 @@
-import React from 'react'
+import React from 'react';
+import CustomNavbar from '../Components/Organism/Navbar/CustomNavbar';
+import Footer from '../Components/Organism/Footer/Footer';
+import FirstSection from '../Components/Organism/FirstSection/FirstSection';
 
 const Home = () => {
   return (
-    <div>
-    
-    </div>
+    <>
+    <CustomNavbar/>
+    <FirstSection/>
+    <Footer/>
+    </>
   )
 }
 

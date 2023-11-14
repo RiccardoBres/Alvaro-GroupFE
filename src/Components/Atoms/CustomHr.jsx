@@ -7,5 +7,5 @@ const CustomHr = ({ className }) => {
 export default CustomHr;
 
 /*    
-<CustomHr className="custom-hr" />
+<CustomHr className="****" />
  */

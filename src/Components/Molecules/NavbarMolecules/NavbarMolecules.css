@@ -1,0 +1,14 @@
+/* import './NavbarMolecules.css'; */
+
+.container-titles-navbar{
+    display: inline-flex;
+    color: white;
+    gap: 2rem;
+    margin: 0 20px;
+    font-size: 20px;
+   
+}
+.title-nav{
+    margin: 0;
+    padding: 0;
+}

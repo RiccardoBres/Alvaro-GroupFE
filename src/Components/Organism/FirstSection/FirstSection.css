@@ -1,0 +1,17 @@
+.container-first-section {
+    height: 100vh;
+    display: block;
+    position: relative;
+    max-height: 70vw;
+    overflow: hidden;
+    background: #000;
+    background-image: url(https://musicglue-images-prod.global.ssl.fastly.net/resize?url=https%3A%2F%2Fd180qbda6o7e4k.cloudfront.net%2F55%2F41%2F96%2F73%2F22%2F32%2F42%2F06%2F8b%2Fee%2Fcb%2Fff%2Feb%2F81%2F62%2Fae%2Fbg-repeat.jpg&width=1400&mode=contain);
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-position: 50% 50%;
+    background-color: #000;
+    max-height: 110vw;
+    background-size: 700px;
+ }
+ 

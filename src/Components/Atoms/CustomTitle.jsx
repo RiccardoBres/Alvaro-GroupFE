@@ -1,10 +1,9 @@
 import React from 'react';
 
-const CustomTitle = ({ text, fontSize, className }) => {
-  const style = { fontSize: fontSize };
+const CustomTitle = ({ text, className }) => {
 
   return (
-    <h2 style={style} className={className}>
+    <h2 className={className}>
       {text}
     </h2>
   );
@@ -13,5 +12,5 @@ const CustomTitle = ({ text, fontSize, className }) => {
 export default CustomTitle;
 
 {/* 
-<CustomTitle text="Questo è un titolo" fontSize="24px" className="custom-title" />
+<CustomTitle text="Questo è un titolo" className="****" />
  */}

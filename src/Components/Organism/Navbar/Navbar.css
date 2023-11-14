@@ -1,0 +1,26 @@
+.color-light {
+    color: #fff;
+}
+
+.nav-size {
+    max-height: 3.35rem;
+    width: 100%;
+}
+
+.navbar-toggler {
+    background-color: white;
+}
+
+.customNav {
+    position: fixed;
+    z-index: 100;
+    background-color: transparent;
+    transition: background 0.5s ease;
+}
+.icon-cart{
+    font-size: 20px!important;
+}
+
+.customNav.scrolled {
+    background: #251b1b;
+}
