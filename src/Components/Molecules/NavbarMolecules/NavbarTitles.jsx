@@ -1,12 +1,17 @@
 import React from 'react';
 import './NavbarMolecules.css';
 import CustomParagraph from '../../Atoms/CustomParagraph';
+import {useNavigate} from 'react-router-dom';
 
 const NavbarTitles = () => {
+  const navigate = useNavigate();
+  const handleHome =()=>{
+    navigate('/')
+  }
   return (
     <>
       <div className="container-titles-navbar">
-        <CustomParagraph text="Home" className="title-nav" />
+        <CustomParagraph onClick={handleHome} text="Home" className="title-nav" />
         <CustomParagraph text="Merch" className="title-nav" />
         <CustomParagraph text="Video" className="title-nav" />
         <CustomParagraph text="Contact" className="title-nav" />

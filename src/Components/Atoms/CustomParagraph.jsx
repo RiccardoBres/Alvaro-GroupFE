@@ -1,9 +1,9 @@
 import React from 'react';
 
-const CustomParagraph = ({ text, className }) => {
+const CustomParagraph = ({ text, className, onClick }) => {
   
   return (
-    <p className={className}>
+    <p className={className} onClick={onClick}>
       {text}
     </p>
   );

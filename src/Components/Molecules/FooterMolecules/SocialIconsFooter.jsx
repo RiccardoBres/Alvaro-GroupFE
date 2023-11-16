@@ -1,10 +1,16 @@
 import React from 'react';
-import CustomTitle from '../../Atoms/CustomTitle'
+import CustomTitle from '../../Atoms/CustomTitle';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpotify, faInstagram, faFacebook, faTwitter, faYoutube } from '@fortawesome/free-brands-svg-icons';
 import './FooterMolecules.css'
+import CustomParagraph from '../../Atoms/CustomParagraph';
+import {useNavigate} from 'react-router-dom';
 
 const SocialIconsFooter = () => {
+    const navigate = useNavigate();
+    const handleReservedArea=()=>{
+        navigate('/reserved')
+    }
     return (
         <>
             <div className="container-icon-footer">
@@ -16,6 +22,7 @@ const SocialIconsFooter = () => {
                     <FontAwesomeIcon icon={faTwitter} className="icon-footer" />
                     <FontAwesomeIcon icon={faYoutube} className="icon-footer" />
                 </div>
+                <CustomParagraph text="Reserved Area" onClick={handleReservedArea}/>
             </div>
         </>
 

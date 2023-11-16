@@ -13,9 +13,10 @@
 
 .customNav {
     position: fixed;
+    background: #251b1b;
     z-index: 100;
-    background-color: transparent;
-    transition: background 0.5s ease;
+/*     background-color: transparent;
+ */    transition: background 0.5s ease;
 }
 .icon-cart{
     font-size: 20px!important;

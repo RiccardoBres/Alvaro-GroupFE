@@ -7,6 +7,12 @@
     color: rgb(249, 243, 243);
     font-weight: 100;
 }
+.container-icon-footer p{
+    color: white;
+    font-size: 14;
+    text-decoration: underline;
+    cursor: pointer;
+}
 .container-icon-footer{
     display: flex;
     flex-direction: column;

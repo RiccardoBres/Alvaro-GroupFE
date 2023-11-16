@@ -1,9 +1,9 @@
 import React from 'react';
 
-const CustomTitle = ({ text, className }) => {
+const CustomTitle = ({ text, className, onClick }) => {
 
   return (
-    <h2 className={className}>
+    <h2 className={className} onClick={onClick}>
       {text}
     </h2>
   );
