@@ -1,0 +1,24 @@
+.carousel-section{
+    height: 105vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.881);
+    color: white;
+}
+@media (max-width: 768px) {
+    .carousel-section{
+      height: 60vh;
+    }
+}
+.event-title{
+    font-family: "Montserrat",sans-serif;
+    text-align: center;
+    padding: 1rem 1rem;
+    text-align: center;
+    border-top: 1px solid rgba(247, 253, 76, 0.2);
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 27.5px;
+}

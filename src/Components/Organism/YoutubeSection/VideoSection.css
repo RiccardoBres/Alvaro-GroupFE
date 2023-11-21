@@ -1,0 +1,40 @@
+/* YouTubeVideo.css */
+
+.youtube-video {
+    width: 100%;
+    max-width: 700px;
+    position: relative;
+    aspect-ratio: 16 / 9;
+    margin: 0 auto;
+}
+
+.youtube-video iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* VideoSection.css */
+
+.video-section {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.video-section h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+/* Aggiungi stili per la modalità mobile se necessario */
+@media (max-width: 768px) {
+  .youtube-video {
+    padding-bottom: 75%; /* Imposta un rapporto di aspetto diverso per dispositivi mobili */
+  }
+
+  .video-section h2 {
+    font-size: 20px;
+  }
+}

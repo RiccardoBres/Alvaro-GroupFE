@@ -61,7 +61,7 @@ function MerchandiseForm() {
  return (
   <>
       <form className='form' onSubmit={handleSubmit} encType="multipart/form-data">
-        <CustomTitle text="New event" className="form-title" />
+        <CustomTitle text="New merch" className="form-title" />
         <div className="mb-3">
           <label htmlFor="merchName" className="form-label">Merch name</label>
           <input

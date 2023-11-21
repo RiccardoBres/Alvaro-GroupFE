@@ -7,11 +7,24 @@ const initialState = {
     error: null,
 }
 
-
+export const getEvents = createAsyncThunk(
+    'allEvent/getEvents',
+    
+       async()=>{
+        try {
+            const response = await axios.get(`${process.env.REACT_APP_SERVER_BASE_URL}/events`);
+            const data = await response.data;
+            return data;    
+            
+        } catch (error) {
+            
+        }
+    }
+)
 
 export const createEvent = createAsyncThunk(
     "event/createEvent",
-    async (event) => {
+    async (event, {dispatch}) => {
         const form = new FormData()
         form.append("name", event.name);
         form.append("location", event.location);
@@ -25,8 +38,8 @@ export const createEvent = createAsyncThunk(
                     "Content-Type": "multipart/form-data",
                 }
             })
-            console.log(res);
-            return res.data;
+            const updatedEventList = await dispatch(getEvents());
+            return updatedEventList;
         } catch (error) {
             throw new error()
         }
@@ -41,12 +54,23 @@ const EventSlice = createSlice({
     initialState,
     extraReducers: (builder) => {
         builder
+        .addCase(getEvents.pending, (state) => {
+            state.isEventLoading = true;
+        })
+        .addCase(getEvents.fulfilled, (state, action) => {
+            state.isEventLoading = false;
+            state.event = action.payload;
+        })
+        .addCase(getEvents.rejected, (state) => {
+            state.isEventLoading = false;
+            state.error = "Failed to fetch event";
+        })
             .addCase(createEvent.pending, (state) => {
                 state.isLoading = true;
             })
             .addCase(createEvent.fulfilled, (state, action) => {
                 state.isLoading = false;
-                state.event = action.payload;
+                state.event = action.payload;  
             })
             .addCase(createEvent.rejected, (state) => {
                 state.isLoading = false;
