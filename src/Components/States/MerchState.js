@@ -5,6 +5,7 @@ const initialState = {
     merch: [],
     isMerchLoading: false,
     error: null,
+    selectedMerch: null,
 };
 
 
@@ -20,8 +21,19 @@ export const getMerch = createAsyncThunk(
             throw error;
         }
     }
-    
 )
+export const getMerchById = createAsyncThunk(
+    'merch/getMerchById',
+    async (id) => {
+      try {
+        const response = await axios.get(`${process.env.REACT_APP_SERVER_BASE_URL}/merchandising/${id}`);
+        return response.data.merchById; 
+      } catch (error) {
+        throw error;
+      }
+    }
+  );
+
 
 export const createMerch = createAsyncThunk(
     'merch/createMerch',
@@ -78,13 +90,27 @@ const MerchSlice = createSlice({
             })
             .addCase(resetMerchError, (state) => {
                 state.error = null;
+            })
+            .addCase(getMerchById.pending, (state) => {
+                state.isMerchLoading = true;
+            })
+            .addCase(getMerchById.fulfilled, (state, action) => {
+                state.isMerchLoading = false;
+                state.selectedMerch = action.payload;
+            })
+            .addCase(getMerchById.rejected, (state) => {
+                state.isMerchLoading = false;
+                state.error = "Failed to fetch merch by ID";
             });
+
     },
 });
+
 
 
 export const allMerch = (state) => state.merchState.merch;
 export const isMerchLoading = (state) => state.merchState.isMerchLoading;
 export const merchError = (state) => state.merchState.error;
+export const selectedMerch = (state) => state.merchState.selectedMerch; 
 
 export default MerchSlice.reducer;

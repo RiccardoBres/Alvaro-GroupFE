@@ -2,10 +2,12 @@ import React from 'react';
 import CustomImage from '../../Atoms/CustomImage';
 import CustomParagraph from '../../Atoms/CustomParagraph';
 import CustomTitle from '../../Atoms/CustomTitle';
+import { } from '@fortawesome/free-brands-svg-icons';
 import './CardMerch.css'
 
-const CardMerch = ({ merchData }) => {
+const CardMerch = ({ merchData, onClick }) => {
     const { name, size, price,image } = merchData;
+    
 
     return (
         <>
@@ -15,6 +17,7 @@ const CardMerch = ({ merchData }) => {
                 <CustomTitle text={name} className="merch-title" />
                 <CustomParagraph text={size} className="merch-description" />
                 <CustomParagraph text={price +  "$"}  className="merch-description" />
+                <CustomParagraph onClick={onClick} text='Add to cart' className="add-to-cart"/>
             </div>
         </div>
         </>

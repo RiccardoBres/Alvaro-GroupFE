@@ -7,6 +7,7 @@ import { Provider } from 'react-redux';
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import eventState from './Components/States/EventState';
 import merchState from './Components/States/MerchState';
+import cartState from './Components/States/CarrelState';
 
 
 
@@ -14,6 +15,7 @@ import merchState from './Components/States/MerchState';
 const reducer = combineReducers({
    eventState: eventState,
    merchState: merchState,
+   cartState: cartState,
  });
 
  const store = configureStore({

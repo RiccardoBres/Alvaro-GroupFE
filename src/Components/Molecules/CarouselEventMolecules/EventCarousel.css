@@ -9,15 +9,14 @@
     position: relative;
 }
 .carousel .slide img {
-    width: 45dvh;
-    vertical-align: top;
-    border: 0;
-    max-height: 40dvh;
+    width: 80%;
 }
 .display-none {
     display: none;
 }
-
+.card-container .smaller{
+    width: 60%;
+}
 .carousel-root {
     display: flex;
     align-items: center;

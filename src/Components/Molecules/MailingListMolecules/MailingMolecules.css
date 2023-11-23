@@ -1,0 +1,56 @@
+.container-mailing-input{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+}
+.mailing-title{
+    font-size: 22px;
+    font-weight: 400;
+    margin: 15px 0;
+}
+.container-input input{
+    text-align: center;
+    padding: 13px;
+    border: 1px solid gray;
+    width: 60%;
+}
+.container-input button{
+    background-color: gray;
+    color: white;
+    border: none;
+    width: 50%;
+}
+.policy-text{
+    font-size: 12px;
+    text-align: center;
+    width: 50%;
+    margin: 15px 0;
+}
+.container-input{
+    display: flex;
+}
+
+/* ICONS SOCIAL */
+.social-icons{
+    display: flex;
+    gap: 1rem;
+    margin: 10px 0;
+}
+.container-icon{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+    margin: 50px 0;
+}
+.title-icons{
+    color: rgb(78, 77, 77);
+    font-size: 22px;
+    font-weight: 400;
+}
+.icon-social{
+    color: rgb(46, 46, 46);
+    font-size: 24px;
+}

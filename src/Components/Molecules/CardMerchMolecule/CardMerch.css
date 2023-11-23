@@ -1,11 +1,12 @@
 .card-merch {
     position: relative;
-    display: inline-block; 
+    display: inline-block;
 }
+
 .merch-image {
     max-width: 85vw;
     width: 22vw;
-    margin: 10px;
+    min-height: 20vw;
     position: relative;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     max-height: 20vw;
@@ -16,29 +17,33 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 0;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     opacity: 0;
-    transition: opacity 0.3s, height 0.5s ease-in-out;
+    transition: opacity 0.3s;
     color: white;
     font-size: 15px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
-
+.merch-title{
+    font-size: 16px;
+    font-weight: 400;
+    text-align: center;
+}
+.add-to-cart{
+    text-decoration: underline;
+    cursor: pointer;
+}
 .card-merch:hover .merch-details {
     opacity: 1;
-    height: 100%;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    background-image: url(https://musicglue-images-prod.global.ssl.fastly.net/resize?url=https%3A%2F%2Fd180qbda6o7e4k.cloudfront.net%2F55%2F41%2F96%2F73%2F22%2F32%2F42%2F06%2F8b%2Fee%2Fcb%2Fff%2Feb%2F81%2F62%2Fae%2Fbg-repeat.jpg&width=1400&mode=contain);
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    background-position: 50% 50%;
+    background-color: rgba(0, 0, 0, 0.863);
+    padding: 10px;
 }
-.card-merch:hover .merch-image{
+
+.card-merch:hover .merch-image {
     box-shadow: none;
 }
 
@@ -54,28 +59,37 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        box-shadow: none!important;
+        box-shadow: none !important;
     }
-    .merch-image{
-        box-shadow: none!important;
+    .card-merch{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
     }
-    .merch-title{
+    .merch-image {
+        box-shadow: none !important;
+    }
+
+    .merch-title {
         font-size: 14px;
     }
-    .col-merch-img{
+
+    .col-merch-img {
         width: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
     }
-    .card-merch:hover .merch-details{
+
+    .card-merch:hover .merch-details {
         background-image: none;
+        background-color: transparent;
     }
-    .merch-details{
+
+    .merch-details {
         height: 100%;
     }
 }
-@media (max-width: 450px) {
-   
 
-}
+@media (max-width: 450px) {}

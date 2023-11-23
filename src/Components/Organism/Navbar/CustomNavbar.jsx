@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
 import './Navbar.css';
-import { Navbar, Nav, Container, Offcanvas, Button } from 'react-bootstrap';
+import { Navbar, Nav, Container} from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import NavbarTitles from '../../Molecules/NavbarMolecules/NavbarTitles';
+import OffCanvasCart from '../../Molecules/NavbarMolecules/OffCanvasCart';
+import OffCanvas from '../../Molecules/NavbarMolecules/OffCanvas';
 
 
 
@@ -46,31 +48,8 @@ const CustomNavbar = () => {
                         </Nav.Link>
                     </Nav>
                 </Container>
-                <Offcanvas show={showNav} onHide={handleCloseNav} placement="start" className="bg-dark w-50">
-                    <Offcanvas.Header closeButton>
-                        <Offcanvas.Title className='color-light'>Menu</Offcanvas.Title>
-                    </Offcanvas.Header>
-                    <Offcanvas.Body className='d-flex flex-column align-items-start'>
-                        <Nav className="me-auto d-flex flex-column">
-                            <Nav.Link className='color-light' href="#home">Home</Nav.Link>
-                            <Nav.Link className='color-light' href="#merch">Merch</Nav.Link>
-                            <Nav.Link className='color-light' href="#video">Video</Nav.Link>
-                            <Nav.Link className='color-light' href="#contact">Contact</Nav.Link>
-                        </Nav>
-                    </Offcanvas.Body>
-                </Offcanvas>
-                <Offcanvas show={showCart} onHide={handleCloseCart} placement="end" className="bg-dark w-25">
-                    <Offcanvas.Header closeButton>
-                        <Offcanvas.Title className='color-light'>Carrello</Offcanvas.Title>
-                    </Offcanvas.Header>
-                    <Offcanvas.Body className='d-flex flex-column align-items-start'>
-                        <Nav className="me-auto d-flex flex-column">
-                            <Nav.Link className='color-light' href="#item1">Articolo 1</Nav.Link>
-                            <Nav.Link className='color-light' href="#item2">Articolo 2</Nav.Link>
-                            <Nav.Link className='color-light' href="#item3">Articolo 3</Nav.Link>
-                        </Nav>
-                    </Offcanvas.Body>
-                </Offcanvas>
+                <OffCanvas show={showNav} onHide={handleCloseNav} />
+                <OffCanvasCart show={showCart} onHide={handleCloseCart} />
             </Navbar>
         </>
 

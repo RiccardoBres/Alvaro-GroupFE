@@ -1,24 +1,23 @@
 .carousel-section{
-    height: 105vh;
+    height: 100vh;
     display: flex;
     align-items: center;
     flex-direction: column;
     justify-content: center;
-    background-color: rgba(0, 0, 0, 0.881);
-    color: white;
+    color: rgb(23, 20, 20);
+    border-bottom: 1px solid rgba(128, 128, 128, 0.512);
+}
+.carousel-section p{
+    font-size: 22px;
+    margin-top: 30px;
 }
 @media (max-width: 768px) {
     .carousel-section{
       height: 60vh;
     }
 }
-.event-title{
-    font-family: "Montserrat",sans-serif;
-    text-align: center;
-    padding: 1rem 1rem;
-    text-align: center;
-    border-top: 1px solid rgba(247, 253, 76, 0.2);
-    text-transform: uppercase;
-    font-weight: bold;
-    font-size: 27.5px;
+.carousel-section h2{
+    font-size: 32px;
+    font-weight: 600;
+    margin-bottom: 20px;
 }

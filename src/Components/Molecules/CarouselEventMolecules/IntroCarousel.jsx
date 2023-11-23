@@ -12,7 +12,7 @@ const IntroCarousel = ({ eventsData, onClick, className}) => {
     return (
         <>
             <div className={className}>
-                <CustomTitle text={name} />
+                <CustomParagraph text={name} />
                 <CustomParagraph text={date} />
                 <FontAwesomeIcon onClick={onClick} icon={faTicket} className="ticketIcon" />
             </div>

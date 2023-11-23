@@ -24,7 +24,6 @@ const EventCarousel = ({ events }) => {
                                 centerSlidePercentage={33.33}
                                 selectedItem={currentCard}
                                 onChange={onSwipe}
-                                autoPlay={true}
                             >
                                 {events.map((event, index) => (
                                     <div

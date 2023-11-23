@@ -5,6 +5,7 @@ import MerchandisingSection from '../Components/Organism/MerchSection/Merchandis
 import VideoSection from '../Components/Organism/YoutubeSection/VideoSection';
 import FirstSection from '../Components/Organism/FirstSection/FirstSection';
 import CarouselEvent from '../Components/Organism/CarouselEvent/CarouselEvent';
+import MailingList from '../Components/Organism/MailingList/MailingList';
 
 const Home = () => {
   return (
@@ -14,6 +15,7 @@ const Home = () => {
     <VideoSection/>
     <MerchandisingSection/>
     <CarouselEvent/>
+    <MailingList/>
     <Footer/>
     </>
   )
