@@ -1,5 +1,5 @@
 .carousel-section{
-    height: 100vh;
+    height: auto;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -7,9 +7,20 @@
     color: rgb(23, 20, 20);
     border-bottom: 1px solid rgba(128, 128, 128, 0.512);
 }
+.event-title{
+    font-size: 30px!important;
+    font-weight: 500;
+    margin: 50px 0;
+}
 .carousel-section p{
-    font-size: 22px;
-    margin-top: 30px;
+    font-size: 14px;
+    margin-bottom: 0;
+}
+.container-location{
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    align-items: center;
 }
 @media (max-width: 768px) {
     .carousel-section{
@@ -17,7 +28,12 @@
     }
 }
 .carousel-section h2{
-    font-size: 32px;
+    font-size: 15px;
     font-weight: 600;
-    margin-bottom: 20px;
+    margin-top: 20px;
+}
+@media (max-width: 450px) {
+    .carousel-section h2 p {
+        font-size: 14px !important;
+    }
 }

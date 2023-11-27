@@ -5,7 +5,7 @@ const initialState = {
     merch: [],
     isMerchLoading: false,
     error: null,
-    selectedMerch: null,
+    selectedMerch: [],
 };
 
 
@@ -15,7 +15,6 @@ export const getMerch = createAsyncThunk(
         try {
             const response = await axios.get(`${process.env.REACT_APP_SERVER_BASE_URL}/merchandising`);
             const data = response.data;
-            console.log(data);
             return data;
         } catch (error) {
             throw error;
@@ -59,11 +58,16 @@ export const createMerch = createAsyncThunk(
 
 
 export const resetMerchError = createAction('merch/resetMerchError');
+export const resetMerch = createAction('merch/resetMerch');
 
 const MerchSlice = createSlice({
     name: 'merchState',
     initialState,
-    reducers: {},
+    reducers: {
+        resetMerch: (state) => {
+            return initialState
+        },
+    },
     extraReducers: (builder) => {
         builder
             .addCase(getMerch.pending, (state) => {
@@ -105,7 +109,6 @@ const MerchSlice = createSlice({
 
     },
 });
-
 
 
 export const allMerch = (state) => state.merchState.merch;

@@ -9,5 +9,48 @@
     align-items: center;
     justify-content: center;
 }
+/* DETAILS MERCH PAGE */
 
+.container-details-merch{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.512);
+}
+.container-details-merch .row{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    border-top: 1px solid rgb(244, 236, 186);
+    
+}
+.container-details-merch .col-details{
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+.container-details-merch img{
+    width: 40%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+.container-details-merch h2{
+    font-size: 5rem;
+    margin: 80px 0;
+    font-weight: 600;
+    text-align: center;
+    color: rgba(216, 112, 147, 0.653);
+    font-family:fangsong;
+}
+.container-details-merch p {
+    font-size: 26px;
+    font-weight: 400;
+    text-align: center;
+}
+.container-descr-details{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 

@@ -33,13 +33,13 @@
     font-weight: 400;
     text-align: center;
 }
-.add-to-cart{
+.details{
     text-decoration: underline;
     cursor: pointer;
 }
 .card-merch:hover .merch-details {
     opacity: 1;
-    background-color: rgba(0, 0, 0, 0.863);
+    background-color: rgba(216, 112, 147, 0.768);
     padding: 10px;
 }
 

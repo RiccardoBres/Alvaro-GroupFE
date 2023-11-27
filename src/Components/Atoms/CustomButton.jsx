@@ -3,7 +3,7 @@ import './CustomButton.css'
 
 const CustomButton = ({ text, onClick, className }) => {
   return (
-    <button className={className} onClick={onClick}>
+    <button className='btn41-43  btn-43' onClick={onClick}>
       {text}
     </button>
   );

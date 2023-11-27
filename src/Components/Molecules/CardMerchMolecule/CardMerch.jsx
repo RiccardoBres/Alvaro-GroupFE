@@ -17,7 +17,7 @@ const CardMerch = ({ merchData, onClick }) => {
                 <CustomTitle text={name} className="merch-title" />
                 <CustomParagraph text={size} className="merch-description" />
                 <CustomParagraph text={price +  "$"}  className="merch-description" />
-                <CustomParagraph onClick={onClick} text='Add to cart' className="add-to-cart"/>
+                <CustomParagraph onClick={onClick} text='Details' className="details"/>
             </div>
         </div>
         </>

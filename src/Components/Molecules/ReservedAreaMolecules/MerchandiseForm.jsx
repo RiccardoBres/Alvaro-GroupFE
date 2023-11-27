@@ -4,7 +4,7 @@ import CustomTitle from '../../Atoms/CustomTitle';
 import CustomButton from '../../Atoms/CustomButton';
 import './ReservedArea.css';
 import ErrorModal from './ErrorModal';
-import { allMerch, merchError, resetMerchError, createMerch } from '../../States/MerchState';
+import { allMerch, merchError, resetMerchError, createMerch } from '../../../States/MerchState';
 
 function MerchandiseForm() {
   const dispatch = useDispatch();

@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react';
 import './Navbar.css';
 import { Navbar, Nav, Container} from 'react-bootstrap';
+import { setCartCOpen } from '../../../States/CarrelState';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import NavbarTitles from '../../Molecules/NavbarMolecules/NavbarTitles';
 import OffCanvasCart from '../../Molecules/NavbarMolecules/OffCanvasCart';
 import OffCanvas from '../../Molecules/NavbarMolecules/OffCanvas';
+import { useDispatch } from 'react-redux';
 
 
 
@@ -13,11 +15,15 @@ const CustomNavbar = () => {
     const [showNav, setShowNav] = useState(false);
     const [showCart, setShowCart] = useState(false);
     const [scrolled, setScrolled] = useState(false);
+    const dispatch = useDispatch();
 
     const handleCloseNav = () => setShowNav(false);
     const handleShowNav = () => setShowNav(true);
     const handleCloseCart = () => setShowCart(false);
     const handleShowCart = () => setShowCart(true);
+    const handleCartOpen = () => {
+        dispatch(setCartCOpen())
+    }
 
     const handleScroll = () => {
         const offset = window.scrollY;
@@ -43,7 +49,7 @@ const CustomNavbar = () => {
                         </Nav>
                     </Navbar.Collapse>
                     <Nav>
-                        <Nav.Link eventKey={2} href="#memes" onClick={handleShowCart}>
+                        <Nav.Link eventKey={2}onClick={handleCartOpen}>
                             <FontAwesomeIcon className='color-light' icon={faShoppingCart} />
                         </Nav.Link>
                     </Nav>

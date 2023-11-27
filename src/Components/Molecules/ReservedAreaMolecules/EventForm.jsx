@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import CustomTitle from '../../Atoms/CustomTitle';
 import CustomButton from '../../Atoms/CustomButton';
 import './ReservedArea.css';
-import { createEvent, isLoading, eventError, resetEventError } from '../../States/EventState';
+import { createEvent, isLoading, eventError, resetEventError } from '../../../States/EventState';
 import ErrorModal from './ErrorModal';
 
 
