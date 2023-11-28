@@ -1,35 +1,50 @@
-import { useState } from 'react';
-import { Carousel } from 'react-responsive-carousel';
-import 'react-responsive-carousel/lib/styles/carousel.min.css';
+import React from 'react';
+import Slider from 'react-slick';
+import { Card } from 'react-bootstrap';
+import IntroCarousel from '../CarouselEventMolecules/IntroCarousel'
 import CustomImage from '../../Atoms/CustomImage';
-import IntroCarousel from './IntroCarousel';
-import { Container, Row, Col, Card } from 'react-bootstrap';
-import './EventCarousel.css';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import './EventCarousel.css'; 
 
 const EventCarousel = ({ events }) => {
-    const [currentCard, setCurrentCard] = useState(1);
-
-    const onSwipe = (index) => {
-        setCurrentCard(index);
+    const settings = {
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        responsive: [
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    infinite: true,
+                    dots: true,
+                },
+            },
+            {
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                },
+            },
+        ],
     };
 
     return (
-                    <Carousel
-                        showThumbs={false}
-                        showArrows={true}
-                        showStatus={false}
-                        centerMode={true}
-                        centerSlidePercentage={33}
-                        selectedItem={currentCard}
-                        onChange={onSwipe}
-                    >
-                        {events.map((event, index) => (
-                            <Card key={index} className={`card-container ${index === currentCard ? 'main-card' : 'smaller'}`}>
-                                <CustomImage src={event.image} alt={`Image ${index}`} className="carousel-image" />
-                                <IntroCarousel eventsData={event} className={`${index === currentCard ? 'main-description' : 'display-none'}`} />
-                            </Card>
-                        ))}
-                    </Carousel>
+        <div className="center-carousel"> {/* Aggiungi una classe per centrare il carosello */}
+            <Slider {...settings}>
+                {events.map((event, index) => (
+                    <div key={index} className='d-flex w-100 align-items-center justify-content-center gap-5'>
+                        <IntroCarousel eventsData={event}/> 
+                        <CustomImage src={event.image} alt={event.title} /> 
+                    </div>
+                ))}
+            </Slider>
+        </div>
     );
 };
 

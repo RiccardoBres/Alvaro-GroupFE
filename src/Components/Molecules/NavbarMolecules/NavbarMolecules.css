@@ -1,72 +1,125 @@
 /* import './NavbarMolecules.css'; */
 
-.container-titles-navbar{
+.container-titles-navbar {
     display: inline-flex;
     color: white;
     gap: 2rem;
     margin: 0 20px;
     font-size: 20px;
-   
+
 }
-.title-nav{
+
+.title-nav {
     margin: 0;
     padding: 0;
     cursor: pointer;
 
 }
-/* OFFCANVAS CART */
-.info-cart{
-    display: flex;
-    align-items: center;
-    width: 100%;
-    justify-content: center;
-    gap: 1rem;
-}
 
-.container-item-cart{
+/* OFFCANVAS CART */
+
+.container-item-cart {
     width: 100%;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     margin: 50px 0;
+    gap: 1rem;
 }
-
-.offcanvas-header{
-    color: rgb(250, 247, 247);
+.offcanvas-header {
+    color: black;
     height: auto;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
 }
 
-.header-offCanvas-cart .icon-cart{
+.header-offCanvas-cart .icon-cart {
     font-size: 35px;
     color: white;
+    ;
     text-align: center;
 
 }
 
-.container-carrel-list{
+.container-carrel-list {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    margin-bottom: 100px;
 }
-.offCanvas-cart{
+
+.footer-offCanvas {
+    padding: 10px;
+    background-color: rgb(39, 20, 27);
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    z-index: 150;
+}
+
+.body-offCanvas {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    overflow-y: scroll;
+    height: 50%;
+}
+.body-offCanvas::-webkit-scrollbar{
+    display: none;
+}
+
+.offCanvas-cart {
     background-color: rgb(39 20 27 / 98%);
     color: white;
     width: 30%;
     overflow: auto;
 }
-.container-image-title-cart{
+
+.info-cart {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 1rem;
+    margin: 15px 0;
 }
-.carrell-card-image{
-    width: 13vh;
+.info-cart p{
+    margin: 0;
+    font-weight: 400;
+    color: antiquewhite;
 }
-.carrell-card-title{
-    font-size: 15px;
+.container-image-title-cart {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.carrell-card-image {
+    max-width: 18vh;
+}
+
+.carrell-card-title {
+    font-size: 16px;
     text-align: center;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+.close-button{
+    width: 50px;
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: 25px;
+}
+@media (min-width: 768px) {
+    .hide-on-large-screen {
+        display: none;
+    }
+}
+@media (max-width: 768px) {
+    .offcanvas-header{
+        justify-content: space-between;
+        align-items: start;
+    }
 }

@@ -1,102 +1,16 @@
-/* General styling */
-.card-container {
-    transition: transform 1s, filter 0.5s;
-    filter: blur(5px);
-    width: 90%;
-    margin: 20px;
+.center-carousel {
+  margin: 0 auto; 
+  max-width: 800px; 
+}
+.container.image-event-desci{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+@media (max-width: 450px) {
+  .center-carousel {
+    max-width: 100%; 
   }
-  
-  .display-none {
-    display: none;
-  }
-  
-  .carousel-row {
-    display: flex;
-    justify-content: center;
-  }
-  
-  /* Main card styling */
-  .main-card {
-    filter: blur(0);
-    overflow: hidden;
-    margin: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  }
-  
-  .carousel .slide img {
-    width: 100%;
-    transition: transform 2s;
-    transform: scale(1.05);
-    object-fit: cover;
-  }
-  
-  .main-description {
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  /* Responsive styling */
-  @media (max-width: 768px) {
-    .main-card img {
-      height: 100%;
-      width: 100%;
-    }
-  
-    .carousel .slider-wrapper {
-      width: 100%;
-    }
-  }
-  
-  @media (max-width: 450px) {
-    .main-card img {
-      height: 100%;
-      width: 100%;
-    }
-  
-    .main-description h2 {
-      font-size: 14px !important;
-    }
-  
-    .main-description p {
-      font-size: 12px !important;
-    }
-  }
-  
-  /* Carousel controls */
-  .carousel.carousel-slider .control-arrow {
-    background: none;
-  }
-  
-  .carousel.carousel-slider .control-prev.control-arrow:before,
-  .carousel.carousel-slider .control-next.control-arrow:before {
-    color: #333; /* colore scuro per le frecce */
-  }
-  
-  .carousel .control-dots {
-    display: none;
-  }
-  
-  /* Icon styling */
-  .ticketIcon {
-    font-size: 25px;
-    margin: 20px 0;
-  }
-  
-  .locationIcon {
-    font-size: 15px;
-  }
-  
-  /* Adjusted slider width */
-  .carousel .slider-wrapper {
-    width: 85%;
-  }
-  
-  /* Hover effect for arrows */
-  .carousel.carousel-slider .control-arrow:hover {
-    background: none;
-    color: #555; /* colore più scuro al passaggio del mouse */
-  }
-  
+}

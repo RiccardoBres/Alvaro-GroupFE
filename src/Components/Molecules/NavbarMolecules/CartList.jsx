@@ -4,7 +4,7 @@ import CustomParagraph from '../../Atoms/CustomParagraph';
 import CustomButton from '../../Atoms/CustomButton';
 import CustomImage from '../../Atoms/CustomImage';
 import './NavbarMolecules.css'
-import { removeFromCart, resetCart, selectCartItems } from '../../../States/CarrelState';
+import { removeFromCart, selectCartItems } from '../../../States/CarrelState';
 
 
 const CartList = () => {
@@ -15,9 +15,6 @@ const CartList = () => {
         dispatch(removeFromCart(item));
     };
 
-    const handleResetCart = () => {
-        dispatch(resetCart());
-    };
     useEffect(() => {
         console.log(cartItems);
     }, [cartItems]);
@@ -27,17 +24,17 @@ const CartList = () => {
                 {Array.isArray(cartItems) &&
                     cartItems.map((item) => (
                         <div className='container-item-cart' key={item._id}>
+                            <CustomImage src={item.image} className='carrell-card-image' />
                             <div className="container-image-title-cart" key={item._id}>
-                                <CustomImage src={item.image} className='carrell-card-image' />
                                 <CustomParagraph text={item.name} className='carrell-card-title' />
+                                <CustomParagraph text={item.size} className='carrell-card-title' />
+                                <CustomParagraph text={item.price + '$'} className='carrell-card-title' />
+                                <CustomButton onClick={() => handleRemoveFromCart(item)} text='Delete' />
                             </div>
-                            <CustomParagraph text={item.price + '$'} className='carrell-card-title' />
-                            <CustomButton onClick={() => handleRemoveFromCart(item)} text='Delete' />
                         </div>
-                    )) 
+                    ))
                 }
-                {cartItems.length == 0 ? <CustomParagraph text='No product in your cart' className='text-center'/>: null}
-                {cartItems.length > 0 ? <CustomButton onClick={handleResetCart} text='Reset' /> : null}
+                {cartItems.length == 0 ? <CustomParagraph text='No product in your cart' className='text-center' /> : null}
             </div>
         </>
     );
