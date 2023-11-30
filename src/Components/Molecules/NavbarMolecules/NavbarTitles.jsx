@@ -5,14 +5,13 @@ import {useNavigate} from 'react-router-dom';
 
 const NavbarTitles = () => {
   const navigate = useNavigate();
-  const handleHome =()=>{
-    navigate('/')
-  }
+  const handleHome =()=>{navigate('/')}
+  const handleMerch =()=>(navigate('/merchandising'))
   return (
     <>
       <div className="container-titles-navbar">
         <CustomParagraph onClick={handleHome} text="Home" className="title-nav" />
-        <CustomParagraph text="Merch" className="title-nav" />
+        <CustomParagraph text="Merch" onClick={handleMerch} className="title-nav" />
         <CustomParagraph text="Video" className="title-nav" />
         <CustomParagraph text="Contact" className="title-nav" />
       </div>

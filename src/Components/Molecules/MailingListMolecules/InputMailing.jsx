@@ -22,4 +22,5 @@ const InputMailing = () => {
     )
 }
 
-export default InputMailing
+export default InputMailing;
+

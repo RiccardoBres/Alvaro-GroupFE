@@ -11,9 +11,10 @@ const EventCarousel = ({ events }) => {
     const settings = {
         dots: true,
         infinite: true,
-        speed: 500,
+        speed: 900,
         slidesToShow: 1,
         slidesToScroll: 1,
+        arrows: false,
         responsive: [
             {
                 breakpoint: 1024,
@@ -35,12 +36,12 @@ const EventCarousel = ({ events }) => {
     };
 
     return (
-        <div className="center-carousel"> {/* Aggiungi una classe per centrare il carosello */}
+        <div className="center-carousel"> 
             <Slider {...settings}>
                 {events.map((event, index) => (
-                    <div key={index} className='d-flex w-100 align-items-center justify-content-center gap-5'>
+                    <div key={index} className='intro-car-desci'>
                         <IntroCarousel eventsData={event}/> 
-                        <CustomImage src={event.image} alt={event.title} /> 
+                        <CustomImage src={event.image} alt={event.title} className='image-event' /> 
                     </div>
                 ))}
             </Slider>

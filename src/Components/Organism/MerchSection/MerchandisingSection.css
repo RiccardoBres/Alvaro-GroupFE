@@ -3,6 +3,7 @@
     align-items: center;
     justify-content: center;
     margin-top: 30px;
+    flex-wrap: wrap;
 }
 .row-merch{
     display: flex;
@@ -32,8 +33,14 @@
     justify-content: center;
 }
 .container-details-merch img{
-    width: 40%;
+    width: auto;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    margin: 5px;
+}
+@media (max-width: 450px) {
+    .container-details-merch img{
+        width: auto;
+    }
 }
 .container-details-merch h2{
     font-size: 5rem;

@@ -13,9 +13,9 @@ const MerchandisingSection = () => {
     const { merchandising } = useSelector(allMerch);
     const navigate = useNavigate();
 
-  const handleNavigate =(item)=>{
-    navigate(`/merchandising/${item._id}`)
-  }
+    const handleNavigate = (item) => {
+        navigate(`/merchandising/${item._id}`)
+    }
 
 
     useEffect(() => {
@@ -24,14 +24,16 @@ const MerchandisingSection = () => {
 
     return (
         <>
-            <Container fluid className='container-merch'>
+            <Container fluid>
                 <Row className='row-merch'>
-                    {Array.isArray(merchandising) &&
-                        merchandising.map((merch) => (
-                            <Col lg={3} key={merch._id} md={4} sm={2} className='col-merch-img mb-5'>
-                                <CardMerch merchData={merch} onClick={() => handleNavigate(merch)} />
-                            </Col>
-                        ))}
+                    <div className="container-merch">
+                        {Array.isArray(merchandising) &&
+                            merchandising.slice(0, 10).map((merch) => (
+                                <Col lg={3} key={merch._id} md={4} sm={6} className='col-merch-img mb-5'>
+                                    <CardMerch merchData={merch} onClick={() => handleNavigate(merch)} />
+                                </Col>
+                            ))}
+                    </div>
                 </Row>
             </Container>
         </>

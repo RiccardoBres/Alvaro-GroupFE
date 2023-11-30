@@ -1,5 +1,5 @@
 .carousel-section{
-    height: 80vh;
+    height: 75vh;
     display: flex;
     text-align: center;
     color: rgb(23, 20, 20);
@@ -8,11 +8,20 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    padding-bottom: 90px;
 }
 .event-title{
-    font-size: 5rem;
+    font-size:4rem;
     font-weight: 500;
     margin-bottom: 50px;
     text-align: center;
-    color: rgba(216, 112, 147, 0.653)
+    color: rgba(216, 112, 147, 0.881)
+}
+@media (max-width: 450px) {
+    .carousel-section{
+        height: auto;
+    }
+    .event-title{
+        font-size: 3rem;
+    }
 }

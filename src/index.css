@@ -5,4 +5,10 @@
 }
 body{
   font-family: "Montserrat",sans-serif;
+  background-image: url(https://img.freepik.com/free-photo/abstract-luxury-plain-blur-grey-black-gradient-used-as-background-studio-wall-display-your-products_1258-52733.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  
 }

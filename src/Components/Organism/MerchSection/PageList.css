@@ -1,0 +1,36 @@
+.container-merch-list {
+    height: auto;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.512);
+    padding: 40px;
+}
+.row-merc-list{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+.col-merch-list{
+    margin: 10px 0px;
+}
+.title-merch-list{
+    font-size: 5rem;
+    margin: 80px 0;
+    font-weight: 600;
+    text-align: center;
+    color: rgba(216, 112, 147, 0.653);
+    font-family:fangsong;
+}
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.pagination button {
+    margin: 0 5px;
+}

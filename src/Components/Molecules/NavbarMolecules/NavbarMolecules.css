@@ -96,7 +96,7 @@
 }
 
 .carrell-card-image {
-    max-width: 18vh;
+    width: 43%;
 }
 
 .carrell-card-title {
@@ -112,14 +112,22 @@
     color: white;
     font-size: 25px;
 }
-@media (min-width: 768px) {
+@media (min-width: 600px) {
     .hide-on-large-screen {
         display: none;
     }
-}
-@media (max-width: 768px) {
     .offcanvas-header{
         justify-content: space-between;
         align-items: start;
     }
+}
+@media (max-width: 600px) {
+    .offcanvas-header{
+        justify-content: space-between;
+        align-items: start;
+    }
+    .offCanvas-cart{
+        width: 100%!important;
+    }
+
 }

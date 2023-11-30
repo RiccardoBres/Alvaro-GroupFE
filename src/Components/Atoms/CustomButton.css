@@ -8,6 +8,7 @@
     transition: all 0.3s ease;
     position: relative;
     display: inline-block;
+    min-width: 150px;
   }
   
   .btn-43 {

@@ -1,0 +1,57 @@
+.body-offCanvas-left{
+    background-color: rgb(39, 20, 27);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.link-ofCanvas-left {
+    color: white !important;
+    font-size: 25px;
+    width: 100%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2); 
+    padding: 10px;
+    transition: border-bottom 0.3s ease; 
+}
+
+.link-ofCanvas-left:hover {
+    color: white !important;
+    border-bottom: 1px solid white;
+}
+.social-icons-offCanvas{
+    display: flex;
+    align-items: center;
+    font-size: 30px;
+    color: white!important;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin: 30px 0;
+}
+.container-mailing-input-left{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.container-input-left{
+    display: flex;
+    margin: 20px 0;
+}
+.container-input-left input{
+    text-align: center;
+    padding: 13px;
+    background-color: transparent;
+    color:rgb(39, 20, 27) ;
+    border: 1px solid rgb(246, 241, 241);
+    width: 60%;
+    height: auto;
+}
+.container-input-left button{
+    background-color: #dcd2c9;
+    color: rgb(39, 20, 27);
+    border: none;
+    width: 50%;
+}
+.container-mailing-input-left p{
+    font-size: 13px;
+    text-align: justify;
+}

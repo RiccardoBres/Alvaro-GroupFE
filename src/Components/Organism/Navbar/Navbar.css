@@ -1,15 +1,15 @@
 .color-light {
     color: #fff;
+    font-size: 25px;
 }
-
+.color-light:hover{
+    border: none;
+}
 .nav-size {
     max-height: 3.35rem;
     width: 100%;
 }
 
-.navbar-toggler {
-    background-color: white;
-}
 
 .customNav {
     position: fixed;
@@ -25,3 +25,28 @@
 .customNav.scrolled {
     background: #251b1b;
 }
+/* Aggiungi questo CSS per l'animazione dell'icona hamburger */
+.navbar-toggler-icon {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: block;
+    height: 24px;
+    width: 24px;
+    position: relative;
+    color: white;
+    border: none;
+}
+
+.navbar-toggler-icon .bar {
+    background-color: white;
+    color: white;
+    height: 3px;
+    width: 24px;
+    position: absolute;
+    transition: transform 0.3s ease;
+    transform-origin: center;
+
+}
+
+

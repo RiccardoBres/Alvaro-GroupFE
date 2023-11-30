@@ -82,12 +82,8 @@
         align-items: center;
         justify-content: center;
         flex-direction: column;
+        gap: 1rem;
     }
-
-    .merch-image {
-        box-shadow: none !important;
-    }
-
     .merch-title {
         font-size: 14px;
     }
@@ -100,8 +96,9 @@
     }
 
     .card-merch:hover .overlay {
-        background-image: none;
         background-color: transparent;
+        position: static;
+
     }
 
     .overlay {
@@ -111,7 +108,11 @@
     .card-merch .merch-details {
        opacity: 1;
     }
-    .card-merch:hover .merch-details {
+    .card-merch:hover .merch-image{
 
+    }
+    .card-merch:hover .merch-details{
+        transform: none;
+        transition: none;
     }
 }

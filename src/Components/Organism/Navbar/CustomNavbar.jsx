@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import './Navbar.css';
-import { Navbar, Nav, Container} from 'react-bootstrap';
+import { Navbar, Nav, Container } from 'react-bootstrap';
 import { setCartCOpen } from '../../../States/CarrelState';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import { faShoppingCart, faBars } from '@fortawesome/free-solid-svg-icons';
 import NavbarTitles from '../../Molecules/NavbarMolecules/NavbarTitles';
 import OffCanvasCart from '../../Molecules/NavbarMolecules/OffCanvasCart';
 import OffCanvas from '../../Molecules/NavbarMolecules/OffCanvas';
@@ -42,14 +42,21 @@ const CustomNavbar = () => {
         <>
             <Navbar collapseOnSelect expand="lg" className={`nav-size customNav ${scrolled ? 'scrolled' : ''}`}>
                 <Container fluid className='m-0'>
-                    <Navbar.Toggle className='color-light' aria-controls="responsive-navbar-nav color-light" onClick={handleShowNav} />
-                    <Navbar.Collapse id="responsive-navbar-nav display-none" className="d-none d-lg-flex">
+                    <Navbar.Toggle aria-controls="responsive-navbar-nav" className="color-light" onClick={handleShowNav}>
+                        <FontAwesomeIcon
+                            icon={faBars}
+                            aria-controls="responsive-navbar-nav"
+                            className='navbar-toggler-icon'
+                            onClick={handleShowNav}
+                        />              
+                    </Navbar.Toggle>
+                    <Navbar.Collapse id="responsive-navbar-nav" className="d-none d-lg-flex">
                         <Nav className="me-auto">
                             <NavbarTitles />
                         </Nav>
                     </Navbar.Collapse>
                     <Nav>
-                        <Nav.Link eventKey={2}onClick={handleCartOpen}>
+                        <Nav.Link eventKey={2} onClick={handleCartOpen}>
                             <FontAwesomeIcon className='color-light' icon={faShoppingCart} />
                         </Nav.Link>
                     </Nav>
