@@ -13,18 +13,18 @@ const OffCanvas = ({ show, onHide }) => {
     const policy = "By signing up you agree to receive news and offers from Ezra Furman. You can unsubscribe at any time. For more details see the privacy policy.";
     const navigate = useNavigate();
 
-    const handleHome = () => {
-        navigate('/')
-    }
-    const handleMerch =()=>{
-        navigate('/merchandising')
-    }
+    const handleHome = () => {navigate('/')};
+    const handleMerch =()=>{navigate('/merchandising')};
+    const handleLive =()=>{navigate('/live')};
+
+
     return (
         <Offcanvas show={show} onHide={onHide} placement="start" className="w-75">
             <Offcanvas.Body className='body-offCanvas-left'>
                 <Nav className="me-auto d-flex flex-column w-100">
                     <Nav.Link className='link-ofCanvas-left' onClick={handleHome} >Home</Nav.Link>
                     <Nav.Link className='link-ofCanvas-left' onClick={handleMerch}>Merch</Nav.Link>
+                    <Nav.Link className='link-ofCanvas-left' onClick={handleLive}>Live</Nav.Link>
                     <Nav.Link className='link-ofCanvas-left' href="#video">Video</Nav.Link>
                     <Nav.Link className='link-ofCanvas-left' href="#contact">Contact</Nav.Link>
                 </Nav>

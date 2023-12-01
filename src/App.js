@@ -5,6 +5,7 @@ import Home from './Pages/Home';
 import ReservedPage from './Pages/Reserved Area/ReservedPage';
 import MerchandisingPage from './Pages/Mechandising/MerchandisingPage';
 import MerchandisingList from './Pages/Mechandising/MerchandisingList';
+import LivesPage from './Pages/Lives/LivesPage';
 
 const ScrollToTop = () => {
     const { pathname } = useLocation();
@@ -24,6 +25,7 @@ const App = () => {
                 <Route path="reserved" element={<ReservedPage />} />
                 <Route path="merchandising/:merchId" element={<MerchandisingPage />} />
                 <Route path="merchandising" element={<MerchandisingList />} />
+                <Route path="live" element={<LivesPage />} />
             </Routes>
             <ScrollToTop />
         </Router>

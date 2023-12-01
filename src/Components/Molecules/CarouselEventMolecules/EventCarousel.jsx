@@ -14,7 +14,7 @@ const EventCarousel = ({ events }) => {
         speed: 900,
         slidesToShow: 1,
         slidesToScroll: 1,
-        arrows: false,
+        arrows: true,
         responsive: [
             {
                 breakpoint: 1024,

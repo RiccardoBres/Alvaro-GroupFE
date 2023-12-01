@@ -6,7 +6,7 @@ import CustomInput from '../../Atoms/CustomInput';
 import CustomButton from '../../Atoms/CustomButton';
 
 const InputMailing = () => {
-    const policy = "By signing up you agree to receive news and offers from Ezra Furman. You can unsubscribe at any time. For more details see the privacy policy.";
+    const policy = "By signing up you agree to receive news and offers from GROUP NAME. You can unsubscribe at any time. For more details see the privacy policy.";
     const handleClick=()=>{
         
     }
