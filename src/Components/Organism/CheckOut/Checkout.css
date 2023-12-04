@@ -1,0 +1,6 @@
+.container-payments-page{
+    min-height: 100vh;
+    height: auto;
+    display: flex;
+    align-items: center;
+}

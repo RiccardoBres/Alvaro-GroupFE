@@ -1,4 +1,4 @@
-import storage from 'redux-persist/lib/storage';
+/* import storage from 'redux-persist/lib/storage';
 import { persistReducer } from 'redux-persist';
 
 const persistConfig = {
@@ -8,3 +8,4 @@ const persistConfig = {
 };
 
 export default (rootReducer) => persistReducer(persistConfig, rootReducer);
+ */

@@ -1,59 +1,108 @@
-.container-lives{
+.container-lives {
     min-height: 100vh;
-    width: auto;
     border-bottom: 1px solid rgba(128, 128, 128, 0.512);
     height: auto;
     padding-bottom: 50px;
 }
-.container-lives .title{
+
+.container-lives .title {
     font-size: 5rem;
     margin: 80px 0;
     font-weight: 600;
     text-align: center;
     color: rgba(216, 112, 147, 0.653);
-    font-family:fangsong;
+    font-family: fangsong;
+}
+.container-image-intro-lives{
+    display: flex;
+    border-radius: 5px;
+    box-shadow: 10px 5px 10px rgb(162, 162, 162);
+    justify-content: center;
+    gap: 1rem;
+    width: 80%;
 }
 .row-lives {
-    width: 60%;
-
-    height: auto;
-    overflow-x: hidden;
-    white-space: nowrap;
+    justify-content: center;
+    align-items: center;
     display: flex;
-    animation: scroll 20s linear infinite; /* Modifica la durata (20s) a tuo piacimento */
 }
 
-@keyframes scroll {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(100%);
-    }
+.carousel-swiper {
+    width: 50%;
+    height: 50%;
 }
 .col-lives{
     display: flex;
-    justify-content: center;
-    gap: 0.5rem;
-    flex: 0 0 auto;
-    margin-right: 16px;
+    align-items: center;
+    flex-direction: column;
+    margin: 10px 0;
+    gap: 2rem;
+}
+.col-lives img{
+    border-radius: 5px;
+    box-shadow: 10px 5px 10px rgb(162, 162, 162);
+}
+.col-lives h2 {
+    font-size: 30px;
+    margin: 15px 0;
+    color: rgba(187, 63, 104, 0.653);
+}
+.live-card-info{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+    gap: 2rem;
+}
+.col-lives p {
+    color: rgba(100, 33, 55, 0.653);
+    font-weight: 500;
+    text-align: center;
+    margin: 0;
+}
+.col-lives .icon{
+    text-align: center;
+}
+.container-info-live{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
     align-items: center;
 }
-
-@media(max-width:450px){
-    .col-lives{
+@media (max-width: 450px) {
+    .col-lives {
         justify-content: center;
-        margin: 50px 50px;
         flex-direction: column;
         text-align: center;
     }
+    .overlay-lives{
+        display: block;
+        opacity: 1;
+        position: relative;
+        color: black;
+    }
+    .carousel-swiper {
+        width: 100%;
+    }
+    .container-image-intro-lives{
+        flex-direction: column;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        border-radius: 5px;
+    }
+    .col-lives img{
+        border-radius: 0;
+    }
 }
-.lives-no-element{ 
+
+.lives-no-element {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
 }
-.ticketIcon-lives{
-    font-size: 30px;
+
+.ticketIcon{
+    font-size: 40px;
 }

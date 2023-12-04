@@ -11,8 +11,8 @@ const IntroCarousel = ({ eventsData, onClick, className }) => {
 
     return (
         <>
-            <div className={className}>
-                <CustomTitle text={name} />
+            <div className='col-lives'>
+                <CustomTitle text={name}/>
                 <CustomParagraph text={date} />
                 <div className="container-location">
                     <FontAwesomeIcon icon={faLocationArrow} className="locationIcon" />

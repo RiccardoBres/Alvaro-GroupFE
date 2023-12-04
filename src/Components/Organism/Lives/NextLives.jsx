@@ -1,5 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { Container, Col, Row, Spinner } from 'react-bootstrap';
+import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/swiper-bundle.css';
 import CustomTitle from '../../Atoms/CustomTitle';
 import { getEvents, allEvents, isLoading } from '../../../States/EventState';
 import IntroCarousel from '../../Molecules/CarouselEventMolecules/IntroCarousel';
@@ -7,12 +11,11 @@ import './Lives.css';
 import { faTicket } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import CustomParagraph from '../../Atoms/CustomParagraph';
-import { useDispatch, useSelector } from 'react-redux';
 import CustomImage from '../../Atoms/CustomImage';
 
 const NextLives = () => {
     const dispatch = useDispatch();
-    const { events } = useSelector(allEvents);
+    const { events } = useSelector((state) => allEvents(state)) || { events: [] };
     const loading = useSelector(isLoading);
 
     useEffect(() => {
@@ -42,14 +45,36 @@ const NextLives = () => {
                 <>
                     <Row>
                         <CustomTitle text='GROUP NAME' className='title' />
-                        <div className="row-lives">
+                        <Swiper
+                            className='carousel-swiper'
+                            spaceBetween={16}
+                            slidesPerView={1}
+                            navigation={true}
+                            autoplay={false}
+                            modules={[Navigation, Pagination, Autoplay]}
+                        >
                             {upcomingEvents.map((event, index) => (
-                                <Col key={index} lg={6} md={6} sm={12} className='col-lives'>
-                                    <CustomImage src={event.image} />
-                                    <IntroCarousel eventsData={event} />
-                                </Col>
+                                <SwiperSlide key={index}>
+                                    <Col
+                                        lg={12}
+                                        md={12}
+                                        sm={12}
+                                        className='col-lives'
+                                    >
+                                        <div className='container-image-intro-lives'>
+                                            <CustomImage src={event.image} />
+                                            <div className="container-info-live">
+                                                {/* <CustomTitle text={event.name} className='text-lives' />
+                                                <CustomParagraph text={event.location} className='text-lives' />
+                                                <CustomParagraph text={event.generalInfo} className='text-lives' />
+                                                <CustomParagraph text={event.date} className='text-lives' /> */}
+                                                <IntroCarousel eventsData={event} className='live-card-info'/>
+                                            </div>
+                                        </div>
+                                    </Col>
+                                </SwiperSlide>
                             ))}
-                        </div>
+                        </Swiper>
                     </Row>
                 </>
             ) : (
@@ -66,3 +91,4 @@ const NextLives = () => {
 };
 
 export default NextLives;
+

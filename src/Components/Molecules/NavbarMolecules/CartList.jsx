@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import {useNavigate} from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
 import CustomParagraph from '../../Atoms/CustomParagraph';
 import CustomButton from '../../Atoms/CustomButton';
@@ -9,11 +10,15 @@ import { removeFromCart, selectCartItems } from '../../../States/CarrelState';
 
 const CartList = () => {
     const dispatch = useDispatch();
+    const navigate = useNavigate()
     const cartItems = useSelector(selectCartItems);
 
     const handleRemoveFromCart = (item) => {
         dispatch(removeFromCart(item));
     };
+    const handleBuyItem = ()=>{
+        navigate('/purchase')
+    }
 
     useEffect(() => {
         console.log(cartItems);
@@ -29,7 +34,10 @@ const CartList = () => {
                                 <CustomParagraph text={item.name} className='carrell-card-title' />
                                 <CustomParagraph text={item.size} className='carrell-card-title' />
                                 <CustomParagraph text={item.price + '$'} className='carrell-card-title' />
-                                <CustomButton onClick={() => handleRemoveFromCart(item)} text='Delete' />
+                                <div className="button-cart-d-b">
+                                    <CustomButton onClick={() => handleRemoveFromCart(item)} text='Delete' />
+                                    <CustomButton onClick={handleBuyItem} text='Buy' />
+                                </div>
                             </div>
                         </div>
                     ))

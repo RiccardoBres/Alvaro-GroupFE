@@ -96,7 +96,7 @@
 }
 
 .carrell-card-image {
-    width: 43%;
+    width: 50%;
 }
 
 .carrell-card-title {
@@ -111,6 +111,17 @@
     border: none;
     color: white;
     font-size: 25px;
+}
+.button-cart-d-b{
+    display: flex;
+    gap: 1rem;
+}
+.button-cart-d-b{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
 }
 @media (min-width: 600px) {
     .hide-on-large-screen {
