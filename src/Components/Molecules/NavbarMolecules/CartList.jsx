@@ -1,22 +1,24 @@
 import React, { useEffect } from 'react';
-import {useNavigate} from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
 import CustomParagraph from '../../Atoms/CustomParagraph';
 import CustomButton from '../../Atoms/CustomButton';
 import CustomImage from '../../Atoms/CustomImage';
 import './NavbarMolecules.css'
-import { removeFromCart, selectCartItems } from '../../../States/CarrelState';
+import { removeFromCart, selectCartItems, addToPurchase, setCartClose } from '../../../States/CarrelState';
 
 
 const CartList = () => {
     const dispatch = useDispatch();
-    const navigate = useNavigate()
+    const navigate = useNavigate();
     const cartItems = useSelector(selectCartItems);
 
     const handleRemoveFromCart = (item) => {
         dispatch(removeFromCart(item));
     };
-    const handleBuyItem = ()=>{
+    const handleBuyItem = (item) => {
+        dispatch(addToPurchase(item));
+        dispatch(setCartClose());
         navigate('/purchase')
     }
 
@@ -31,12 +33,15 @@ const CartList = () => {
                         <div className='container-item-cart' key={item._id}>
                             <CustomImage src={item.image} className='carrell-card-image' />
                             <div className="container-image-title-cart" key={item._id}>
-                                <CustomParagraph text={item.name} className='carrell-card-title' />
+                                <div className="container-quantity-name d-flex">
+                                    <CustomParagraph text={item.quantity + 'x'} className='carrell-card-title' />
+                                    <CustomParagraph text={item.name} className='carrell-card-title' />
+                                </div>
                                 <CustomParagraph text={item.size} className='carrell-card-title' />
                                 <CustomParagraph text={item.price + '$'} className='carrell-card-title' />
                                 <div className="button-cart-d-b">
                                     <CustomButton onClick={() => handleRemoveFromCart(item)} text='Delete' />
-                                    <CustomButton onClick={handleBuyItem} text='Buy' />
+                                    <CustomButton onClick={() => handleBuyItem(item)} text='Buy' />
                                 </div>
                             </div>
                         </div>

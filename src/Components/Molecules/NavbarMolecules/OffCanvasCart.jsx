@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Offcanvas } from 'react-bootstrap';
 import '../../Organism/Navbar/Navbar.css';
 import './NavbarMolecules.css';
-import { selectTotalItems, totalPrice, isCartOpen, setCartClose, selectCartItems, resetCart } from '../../../States/CarrelState';
+import { selectTotalItems, totalPrice, isCartOpen, setCartClose, selectCartItems, resetCart} from '../../../States/CarrelState';
 import CartList from './CartList';
 import CustomParagraph from '../../Atoms/CustomParagraph';
 import CustomButton from '../../Atoms/CustomButton';

@@ -4,6 +4,7 @@ import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import CustomTitle from '../../Atoms/CustomTitle';
 import PaymentForm from '../../Molecules/PaymentsMolecules/PaymentForm';
+import ResumCart from '../../Molecules/PaymentsMolecules/ResumCart';
 import './Checkout.css'
 
 console.log(process.env.REACT_APP_STRIPE_PUBLIC_KEY);
@@ -20,7 +21,7 @@ const Checkout = () => {
                     </Elements>
                 </Col>
                 <Col lg={6} md={6} sm={6}>
-                    {/* Altri componenti o contenuti del lato destro */}
+                    <ResumCart/>
                 </Col>
             </Row>
         </Container>
