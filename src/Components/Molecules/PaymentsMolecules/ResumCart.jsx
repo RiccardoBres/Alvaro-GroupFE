@@ -17,11 +17,11 @@ const ResumCart = () => {
             <div className='container-resume-cart'>
                 <CustomTitle text='Order Summary' className='resume-cart-title' />
                 {cartPurchase.map((item) => (
-                    <>
-                    <div className="container-image-resume">
+                    <div key={item.id}>
+                        <div className="container-image-resume">
                             <CustomImage src={item.image} />
                         </div>
-                        <div key={item.id} className='container-info-resume mt-3'>
+                        <div className='container-info-resume mt-3'>
                             <div className="container-details-resume d-flex">
                                 <CustomParagraph text={item.quantity + 'x'} />
                                 <CustomParagraph text={item.name} />
@@ -41,12 +41,13 @@ const ResumCart = () => {
                                 <CustomParagraph text={'$' + (parseInt(item.shippingCost) + (item.price * item.quantity))} />
                             </div>
                         </div>
-                    </>
+                    </div>
                 ))}
             </div>
         </>
-
     )
 }
+
+
 
 export default ResumCart

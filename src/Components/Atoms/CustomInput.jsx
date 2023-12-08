@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const CustomInput = ({ text, className }) => {
+const CustomInput = ({ text, className, type }) => {
     const [inputValue, setInputValue] = useState('');
 
     const handleChange = (event) => {
@@ -10,7 +10,7 @@ const CustomInput = ({ text, className }) => {
         <>
             <input
                 className={className}
-                type="text"
+                type={type}
                 id="atomInput"
                 value={inputValue}
                 onChange={handleChange}

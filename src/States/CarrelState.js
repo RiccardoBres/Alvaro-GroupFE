@@ -41,7 +41,11 @@ const cartSlice = createSlice({
       const shippingCost = calculateShippingCost(price);
       const cartItem = state.cartItems.find((item) => item.id === id);
       if (cartItem) {
-        state.cartPurchase.length = 0;
+        if (Array.isArray(state.cartPurchase)) {
+          state.cartPurchase.length = 0;
+        } else {
+          state.cartPurchase = [];
+        }
         state.cartPurchase.push({
           image,
           id,
@@ -56,6 +60,7 @@ const cartSlice = createSlice({
         state.isCartOpen = false;
       }
     },
+
     removeFromCart: (state, action) => {
       const { id } = action.payload;
       const existingItem = state.cartItems.find((item) => item.id === id);

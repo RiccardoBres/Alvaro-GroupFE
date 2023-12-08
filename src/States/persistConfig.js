@@ -1,4 +1,4 @@
-/* import storage from 'redux-persist/lib/storage';
+import storage from 'redux-persist/lib/storage';
 import { persistReducer } from 'redux-persist';
 
 const persistConfig = {
@@ -7,5 +7,4 @@ const persistConfig = {
   whitelist: ['cartState'], 
 };
 
-export default (rootReducer) => persistReducer(persistConfig, rootReducer);
- */
+export default (rootReducer) => persistReducer(persistConfig, rootReducer); 
