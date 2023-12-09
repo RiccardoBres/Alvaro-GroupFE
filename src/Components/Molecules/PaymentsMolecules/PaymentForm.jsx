@@ -7,6 +7,8 @@ import CryptoJS from 'crypto-js';
 import { Spinner } from 'react-bootstrap';
 import { selectPurchaseItems } from '../../../States/CarrelState';
 import { useDispatch, useSelector } from 'react-redux';
+import CustomParagrapher from '../../Atoms/CustomParagraph';
+import CustomTitle from '../../Atoms/CustomTitle';
 import ModalPayment from './ModalPayment';
 import './PaymentsMolecules.css';
 
@@ -101,7 +103,7 @@ const PaymentForm = () => {
         <>
             {loading && <Spinner animation="border" variant="dark" />}
             <form className="payment-form" onSubmit={handleSubmit}>
-                User Details
+                <CustomTitle text='User Details'/>
                 <div className="general-info d-flex gap-1">
                     <CustomInput
                         className="form-input"
@@ -163,11 +165,16 @@ const PaymentForm = () => {
                     />
                 </div>
                 <label className="form-label">
-                    Card details
+                <CustomTitle text='Card Details'/>
                     <CardElement className="StripeElement" />
                 </label>
                 <label className="form-label">
-                    Accept Terms and Conditions
+                <CustomTitle text='Privacy Information'/>
+                <CustomParagrapher text='This store is managed by Group Name. Your personal information will only be used to provide the products and services you have requested, in line with the Group Name privacy policy.'/>
+                </label>
+                <label className="form-label">
+                <CustomTitle text='Terms and Conditions '/>
+                <CustomParagrapher text='Please confirm that you accept the terms and conditions'/>
                     <input
                         type="checkbox"
                         checked={termsAccepted}

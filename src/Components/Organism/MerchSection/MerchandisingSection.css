@@ -17,27 +17,30 @@
 /* DETAILS MERCH PAGE */
 
 .container-details-merch{
-    height: 100vh;
+    height: auto;
     display: flex;
     align-items: center;
     flex-direction: column;
+    padding-bottom: 50px;
     border-bottom: 1px solid rgba(128, 128, 128, 0.512);
 }
 .container-details-merch .row{
-    display: flex;
-    align-items: center;
-    justify-content: center;
     width: 100%;
     border-top: 1px solid rgb(244, 236, 186);
     
 }
+.container-details-merch .col-image{
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
 .container-details-merch .col-details{
     display: flex;
-    gap: 1rem;
-    justify-content: center;
+    justify-content: start;
+    font-family: "Montserrat",sans-serif;
 }
 .container-details-merch img{
-    width: auto;
+    width: 80%;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     margin: 5px;
 }
@@ -61,11 +64,21 @@
 .container-details-merch p {
     font-size: 26px;
     font-weight: 400;
-    text-align: center;
 }
 .container-descr-details{
     display: flex;
     flex-direction: column;
-    align-items: center;
+    overflow-y: scroll;
+    max-height: 80vh;
+    width: 100%;
+}
+.container-descr-details::-webkit-scrollbar{
+    display: none;
+}
+.author-description{
+    font-size: 15px!important;
+    font-weight: 100;
+    margin-top: 15px;
+    color: rgba(116, 116, 116, 0.714);
 }
 

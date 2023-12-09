@@ -32,7 +32,7 @@ const cartSlice = createSlice({
           shippingCost,
         });
       }
-      state.totalPrice += price + shippingCost;
+      state.totalPrice += price;
       state.totalItems += 1;
       state.isCartOpen = true;
     },
@@ -41,36 +41,28 @@ const cartSlice = createSlice({
       const shippingCost = calculateShippingCost(price);
       const cartItem = state.cartItems.find((item) => item.id === id);
       if (cartItem) {
-        if (Array.isArray(state.cartPurchase)) {
-          state.cartPurchase.length = 0;
-        } else {
-          state.cartPurchase = [];
-        }
-        state.cartPurchase.push({
+        state.cartPurchase = [{
           image,
           id,
           name,
           price,
           quantity: cartItem.quantity,
           shippingCost,
-        });
-
-        state.totalPrice = (price + shippingCost) * cartItem.quantity;
+        }];
         state.totalItems = cartItem.quantity;
         state.isCartOpen = false;
       }
     },
-
     removeFromCart: (state, action) => {
       const { id } = action.payload;
       const existingItem = state.cartItems.find((item) => item.id === id);
       if (existingItem) {
         existingItem.quantity -= 1;
+        state.totalItems -= 1;
+        state.totalPrice -= existingItem.price || 0;
         if (existingItem.quantity === 0) {
           state.cartItems = state.cartItems.filter((item) => item.id !== id);
         }
-        state.totalItems -= 1;
-        state.totalPrice -= existingItem.price + existingItem.shippingCost || 0;
       }
     },
     resetCart: (state) => {

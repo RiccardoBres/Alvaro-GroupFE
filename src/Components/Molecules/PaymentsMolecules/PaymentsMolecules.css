@@ -8,6 +8,14 @@
   height: auto;
 }
 
+.payment-form h2{
+  font-size: 20px;
+  color: rgba(216, 112, 147, 0.866);
+}
+.payment-form p{
+  font-size: 14px;
+  color: rgb(71, 70, 70);
+}
 .form-label {
   display: block;
   margin-bottom: 8px;
@@ -79,6 +87,8 @@
   border: 1px solid #ddd;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  position: sticky;
+    top: 77px;
 }
 .container-image-resume{
   width: 100%;
@@ -120,7 +130,7 @@
  
 }
 
-.overlay {
+.overlay-spinner {
   position: fixed;
   top: 0;
   left: 0;

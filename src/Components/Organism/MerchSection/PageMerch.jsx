@@ -6,15 +6,16 @@ import CustomImage from '../../Atoms/CustomImage';
 import CustomParagraph from '../../Atoms/CustomParagraph';
 import CustomTitle from '../../Atoms/CustomTitle';
 import { Col, Row, Container } from 'react-bootstrap';
+import loremIpsum from '../../../Layout/Assets/lorem';
 import CustomButton from '../../Atoms/CustomButton';
+import './MerchandisingSection.css'
 import { nanoid } from '@reduxjs/toolkit';
 
 const PageMerch = ({ merchId }) => {
     const dispatch = useDispatch();
     const merchDetails = useSelector((state) => selectedMerch(state));
-
     const handleCart = (item) => {
-        dispatch(addToCart({ id: item._id, name: item.name, price: item.price, image : item.image}));
+        dispatch(addToCart({ id: item._id, name: item.name, price: item.price, image: item.image }));
         console.log(item._id);
     };
 
@@ -33,15 +34,19 @@ const PageMerch = ({ merchId }) => {
             <Row>
                 {merchDetails &&
                     <>
-                        <Col lg={8} key={merchDetails._id} md={6} sm={12} className='col-details'>
+                        <Col lg={6} key={nanoid()} md={6} sm={12} className='col-image'>
                             <CustomImage src={merchDetails.image} />
+                        </Col>
+                        <Col lg={6} key={nanoid()} md={6} sm={12} className='col-details'>
                             <div className="container-descr-details">
                                 <CustomParagraph text={merchDetails.name} />
-                                <CustomParagraph text={merchDetails.price + '$'} />
-                                <CustomParagraph text={merchDetails.size} />
-                                <CustomButton 
-                                text='Add to cart' 
-                                onClick={ () => handleCart(merchDetails)}/>
+                                <CustomParagraph text={'€' + merchDetails.price} />
+                                <CustomButton
+                                    text='Add to cart'
+                                    onClick={() => handleCart(merchDetails)}
+                                    className='w-100'
+                                />
+                                <CustomParagraph text={loremIpsum} className='author-description' />
                             </div>
                         </Col>
                     </>

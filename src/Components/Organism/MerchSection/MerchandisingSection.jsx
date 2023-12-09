@@ -14,7 +14,8 @@ const MerchandisingSection = () => {
     const navigate = useNavigate();
 
     const handleNavigate = (item) => {
-        navigate(`/merchandising/${item._id}`)
+        const itemCopy = { ...item };
+        navigate(`/merchandising/${itemCopy._id}`);
     }
 
 
