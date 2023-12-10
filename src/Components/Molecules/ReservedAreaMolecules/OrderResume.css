@@ -1,0 +1,24 @@
+.container-order-resume {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .order-list {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .order-item {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .order-details {
+    flex-grow: 1;
+  }

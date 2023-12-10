@@ -1,5 +1,31 @@
 /* import './ReservedArea.css' */
-
-.form-title{
-    font-size: 20px;
+.event-header{
+    display: flex;
+    height: auto;
+    gap: 1rem;
+    flex-direction: column;
+    margin-top: 50px;
+}
+.event-header h2{
+    font-size: 25px;
+    font-weight: 400;
+}
+@media(max-width:450px){
+    .event-header h2{
+        font-size: 20px;
+    }
+    .merch-header h2{
+        font-size: 20px!important;
+    }
+}
+.merch-header{
+    display: flex;
+    height: auto;
+    gap: 1rem;
+    flex-direction: column;
+    margin-top: 50px;
+}
+.merch-header h2{
+    font-size: 25px;
+    font-weight: 400;
 }

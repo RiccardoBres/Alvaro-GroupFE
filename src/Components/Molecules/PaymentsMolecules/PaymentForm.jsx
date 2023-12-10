@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react';
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import CustomInput from '../../Atoms/CustomInput';
 import CustomButton from '../../Atoms/CustomButton';
-import { createPaymentIntent, PaymentIntent, isPaymentLoading, PaymentError } from '../../../States/PaymentState';
+import { createPaymentIntent, setCustomerInfo, isPaymentLoading, PaymentError } from '../../../States/PaymentState';
 import CryptoJS from 'crypto-js';
 import { Spinner } from 'react-bootstrap';
 import { selectPurchaseItems } from '../../../States/CarrelState';
@@ -19,14 +19,16 @@ const PaymentForm = () => {
     const cartPurchase = useSelector(selectPurchaseItems);
     const errorFromRedux = useSelector(PaymentError);
     const loading = useSelector(isPaymentLoading);
+    const customerInfo = useSelector((state) => state.paymentState.customerInfo);
 
-    const [name, setName] = useState('');
-    const [surname, setSurname] = useState('');
-    const [email, setEmail] = useState('');
-    const [confirmEmail, setConfirmEmail] = useState('');
-    const [address, setAddress] = useState('');
-    const [postal, setPostal] = useState('');
-    const [city, setCity] = useState('');
+
+    const [name, setName] = useState(customerInfo.name || '');
+    const [surname, setSurname] = useState(customerInfo.surname || '');
+    const [email, setEmail] = useState(customerInfo.email || '');
+    const [confirmEmail, setConfirmEmail] = useState(customerInfo.email || ''); 
+    const [address, setAddress] = useState(customerInfo.address || '');
+    const [postal, setPostal] = useState(customerInfo.postal || '');
+    const [city, setCity] = useState(customerInfo.city || '');
     const [error, setError] = useState('');
     const [modalSuccess, setModalSuccess] = useState(false);
     const [termsAccepted, setTermsAccepted] = useState(false);
@@ -45,6 +47,7 @@ const PaymentForm = () => {
         setModalError(false);
         resetForm();
     };
+
     const handleTermsChange = () => {
         setTermsAccepted(!termsAccepted);
     };
@@ -63,47 +66,76 @@ const PaymentForm = () => {
             cardElement.clear();
         }
     };
+
     const handleSubmit = async (event) => {
         event.preventDefault();
-
         if (!stripe || !elements || !termsAccepted) {
+            setError(
+                'Please fill in all required fields and accept the terms.'
+            );
+            setModalError(true);
             return;
         }
-        if (email.current !== confirmEmail.current) {
-            error.current = 'Incorrect email address';
-            modalError.current = true;
+        if (email !== confirmEmail) {
+            setError('Incorrect email address');
+            setModalError(true);
             return;
         }
         const cardElement = elements.getElement(CardElement);
-
         try {
-            const { paymentMethod, error } = await stripe.createPaymentMethod({
-                type: 'card',
-                card: cardElement,
-                billing_details: {
-                    name: `${name.current} ${surname.current}`,
-                    email: email.current,
-                },
-            });
+            const { paymentMethod, error } =
+                await stripe.createPaymentMethod({
+                    type: 'card',
+                    card: cardElement,
+                    billing_details: {
+                        name: `${name} ${surname}`,
+                        email: email,
+                    },
+                });
             if (error) {
-                error.current = error.message;
+                setError(error.message);
                 setModalError(true);
             } else {
-                await dispatch(createPaymentIntent({ totalAmountCents, hash, paymentMethodId: paymentMethod.id }));
+                dispatch(
+                    setCustomerInfo({
+                        product: {
+                            name: cartPurchase[0].name,  
+                            id: cartPurchase[0].id,      
+                            price: cartPurchase[0].price  
+                        },
+                        paymentId: paymentMethod.id,
+                        customerInfo: {
+                            name,
+                            surname,
+                            email,
+                            address,
+                            postal,
+                            city,
+                        },
+                    })
+                );
+                await dispatch(
+                    createPaymentIntent({
+                        totalAmountCents,
+                        hash,
+                        paymentMethodId: paymentMethod.id,
+                    })
+                );
                 setModalSuccess(true);
+                console.log(customerInfo);
             }
         } catch (error) {
-            error.current = 'Error processing payment';
-            modalError.current = true;
+            setError('Error processing payment');
+            setModalError(true);
         }
     };
-
+    
 
     return (
         <>
             {loading && <Spinner animation="border" variant="dark" />}
             <form className="payment-form" onSubmit={handleSubmit}>
-                <CustomTitle text='User Details'/>
+                <CustomTitle text='User Details' />
                 <div className="general-info d-flex gap-1">
                     <CustomInput
                         className="form-input"
@@ -165,16 +197,16 @@ const PaymentForm = () => {
                     />
                 </div>
                 <label className="form-label">
-                <CustomTitle text='Card Details'/>
+                    <CustomTitle text='Card Details' />
                     <CardElement className="StripeElement" />
                 </label>
                 <label className="form-label">
-                <CustomTitle text='Privacy Information'/>
-                <CustomParagrapher text='This store is managed by Group Name. Your personal information will only be used to provide the products and services you have requested, in line with the Group Name privacy policy.'/>
+                    <CustomTitle text='Privacy Information' />
+                    <CustomParagrapher text='This store is managed by Group Name. Your personal information will only be used to provide the products and services you have requested, in line with the Group Name privacy policy.' />
                 </label>
                 <label className="form-label">
-                <CustomTitle text='Terms and Conditions '/>
-                <CustomParagrapher text='Please confirm that you accept the terms and conditions'/>
+                    <CustomTitle text='Terms and Conditions ' />
+                    <CustomParagrapher text='Please confirm that you accept the terms and conditions' />
                     <input
                         type="checkbox"
                         checked={termsAccepted}
@@ -185,7 +217,7 @@ const PaymentForm = () => {
                 <div className="error-message">{error}</div>
                 <CustomButton type="submit" className="pay-button" disabled={!stripe} text='Pay' />
             </form>
-            <ModalPayment show={modalSuccess || modalError} success={modalSuccess} onClose={handleModalClose} />
+            <ModalPayment show={modalSuccess || modalError} success={modalSuccess} onClose={handleModalClose} name={name} surname={surname} email={email} />
         </>
     );
 

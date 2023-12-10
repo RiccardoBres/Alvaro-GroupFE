@@ -1,5 +1,6 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { FaPlus } from 'react-icons/fa';
 import CustomTitle from '../../Atoms/CustomTitle';
 import CustomButton from '../../Atoms/CustomButton';
 import './ReservedArea.css';
@@ -9,7 +10,8 @@ import { allMerch, merchError, resetMerchError, createMerch } from '../../../Sta
 function MerchandiseForm() {
   const dispatch = useDispatch();
   const [show, setShow] = useState(false);
-  const errorMerch = useSelector((state)=> merchError(state))
+  const errorMerch = useSelector((state) => merchError(state));
+  const [formVisible, setFormVisible] = useState(false);
 
   const [formData, setFormData] = useState({
     name: '',
@@ -26,6 +28,7 @@ function MerchandiseForm() {
       image: null,
     });
   };
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -41,75 +44,88 @@ function MerchandiseForm() {
       image: file,
     });
   };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     dispatch(createMerch(formData));
     cleaner();
-
   };
+
   const handleClose = () => {
     setShow(false);
-    dispatch(resetMerchError())
-  }
+    dispatch(resetMerchError());
+  };
+
+  const handleIconClick = () => {
+    setFormVisible(!formVisible);
+  };
 
   useEffect(() => {
     if (errorMerch) {
       setShow(true);
     }
-  }, [errorMerch]); 
+  }, [errorMerch]);
 
- return (
-  <>
-      <form className='form' onSubmit={handleSubmit} encType="multipart/form-data">
-        <CustomTitle text="New merch" className="form-title" />
-        <div className="mb-3">
-          <label htmlFor="merchName" className="form-label">Merch name</label>
-          <input
-            type="text"
-            name="name"
-            className="form-control"
-            id="name"
-            value={formData.name}
-            onChange={handleChange}
-          />
+  return (
+    <>
+      <div className="merch-header">
+        <div className="d-flex align-items-center gap-2">
+          <FaPlus size={30} onClick={handleIconClick} />
+          <CustomTitle text="Add new merchandising" />
         </div>
-        <div className="mb-3">
-          <label htmlFor="merchImage" className="form-label">Picture</label>
-          <input
-            type="file"
-            name='image'
-            className="form-control"
-            id="image"
-            onChange={handleFileChange}
-          />
-        </div>
-        <div className="mb-3">
-          <label htmlFor="size" className="form-label">Size</label>
-          <input
-            type="text"
-            className="form-control"
-            name="size"
-            id="size"
-            value={formData.size}
-            onChange={handleChange}
-          />
-        </div>
-        <div className="mb-3">
-          <label htmlFor="price" className="form-label">Price</label>
-          <input
-            type='text'
-            className="form-control"
-            name="price"
-            id="price"
-            value={formData.price}
-            onChange={handleChange}
-          />
-        </div>
-        <CustomButton text="Send" className="bn5" type="submit" />
-      </form>
+        <hr/>
+        {formVisible && (
+          <form className='form' onSubmit={handleSubmit} encType="multipart/form-data">
+            <div className="mb-3">
+              <label htmlFor="merchName" className="form-label">Merch name</label>
+              <input
+                type="text"
+                name="name"
+                className="form-control"
+                id="name"
+                value={formData.name}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="merchImage" className="form-label">Picture</label>
+              <input
+                type="file"
+                name='image'
+                className="form-control"
+                id="image"
+                onChange={handleFileChange}
+              />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="size" className="form-label">Size</label>
+              <input
+                type="text"
+                className="form-control"
+                name="size"
+                id="size"
+                value={formData.size}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="price" className="form-label">Price</label>
+              <input
+                type='text'
+                className="form-control"
+                name="price"
+                id="price"
+                value={formData.price}
+                onChange={handleChange}
+              />
+            </div>
+            <CustomButton text="Send" className="bn5" type="submit" />
+          </form>
+        )}
+      </div>
       <ErrorModal error={errorMerch} show={show} onHide={handleClose} />
     </>
- );
+  );
 }
 
 export default MerchandiseForm;
