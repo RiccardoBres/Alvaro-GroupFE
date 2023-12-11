@@ -17,7 +17,7 @@ export const getEvents = createAsyncThunk(
             return data;    
             
         } catch (error) {
-            
+            throw new Error(error); 
         }
     }
 )
@@ -31,7 +31,6 @@ export const createEvent = createAsyncThunk(
         form.append("image", event.image);
         form.append("generalInfo", event.generalInfo);
         form.append("date", event.date);
-        console.log(...form);
         try {
             const res = await axios.post(`${process.env.REACT_APP_SERVER_BASE_URL}/event/create`, form, {
                 headers: {

@@ -41,14 +41,15 @@ const cartSlice = createSlice({
       const shippingCost = calculateShippingCost(price);
       const cartItem = state.cartItems.find((item) => item.id === id);
       if (cartItem) {
-        state.cartPurchase = [{
+        const newPurchaseItem = {
           image,
           id,
           name,
           price,
           quantity: cartItem.quantity,
           shippingCost,
-        }];
+        };
+        state.cartPurchase = [newPurchaseItem];
         state.totalItems = cartItem.quantity;
         state.isCartOpen = false;
       }
@@ -81,14 +82,7 @@ const cartSlice = createSlice({
   },
 });
 
-export const {
-  addToCart,
-  removeFromCart,
-  resetCart,
-  setCartClose,
-  setCartCOpen,
-  addToPurchase,
-} = cartSlice.actions;
+export const { addToCart, removeFromCart, resetCart, setCartClose, setCartCOpen, addToPurchase } = cartSlice.actions;
 
 export const totalPrice = (state) => state.cartState.totalPrice;
 export const selectCartItems = (state) => state.cartState.cartItems;

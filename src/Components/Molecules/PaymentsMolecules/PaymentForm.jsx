@@ -2,7 +2,8 @@ import React, { useRef, useState } from 'react';
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import CustomInput from '../../Atoms/CustomInput';
 import CustomButton from '../../Atoms/CustomButton';
-import { createPaymentIntent, setCustomerInfo, isPaymentLoading, PaymentError } from '../../../States/PaymentState';
+import { createPaymentIntent, isPaymentLoading, PaymentError } from '../../../States/PaymentState';
+import { createCustomer } from '../../../States/CustomerState';
 import CryptoJS from 'crypto-js';
 import { Spinner } from 'react-bootstrap';
 import { selectPurchaseItems } from '../../../States/CarrelState';
@@ -25,7 +26,7 @@ const PaymentForm = () => {
     const [name, setName] = useState(customerInfo.name || '');
     const [surname, setSurname] = useState(customerInfo.surname || '');
     const [email, setEmail] = useState(customerInfo.email || '');
-    const [confirmEmail, setConfirmEmail] = useState(customerInfo.email || ''); 
+    const [confirmEmail, setConfirmEmail] = useState(customerInfo.email || '');
     const [address, setAddress] = useState(customerInfo.address || '');
     const [postal, setPostal] = useState(customerInfo.postal || '');
     const [city, setCity] = useState(customerInfo.city || '');
@@ -69,51 +70,54 @@ const PaymentForm = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        if (!stripe || !elements || !termsAccepted) {
-            setError(
-                'Please fill in all required fields and accept the terms.'
-            );
+
+        if (!name || !surname || !email || !confirmEmail || !address || !city || !postal || !termsAccepted) {
+            setError('Please fill in all required fields and accept the terms.');
             setModalError(true);
             return;
         }
+
         if (email !== confirmEmail) {
             setError('Incorrect email address');
             setModalError(true);
             return;
         }
+
+        if (!stripe || !elements) {
+            setError('Please fill in all required fields and accept the terms.');
+            setModalError(true);
+            return;
+        }
+
         const cardElement = elements.getElement(CardElement);
         try {
-            const { paymentMethod, error } =
-                await stripe.createPaymentMethod({
-                    type: 'card',
-                    card: cardElement,
-                    billing_details: {
-                        name: `${name} ${surname}`,
-                        email: email,
-                    },
-                });
+            const { paymentMethod, error } = await stripe.createPaymentMethod({
+                type: 'card',
+                card: cardElement,
+                billing_details: {
+                    name: `${name} ${surname}`,
+                    email: email,
+                },
+            });
+
             if (error) {
                 setError(error.message);
                 setModalError(true);
             } else {
-                dispatch(
-                    setCustomerInfo({
-                        product: {
-                            name: cartPurchase[0].name,  
-                            id: cartPurchase[0].id,      
-                            price: cartPurchase[0].price  
-                        },
-                        paymentId: paymentMethod.id,
-                        customerInfo: {
-                            name,
-                            surname,
-                            email,
-                            address,
-                            postal,
-                            city,
-                        },
+                console.log("cartPurchase:", cartPurchase);
+                await dispatch(
+                    createCustomer({
+                        name,
+                        surname,
+                        email,
+                        address,
+                        postal,
+                        city,
+                        purchases: cartPurchase[0],
                     })
                 );
+                
+                console.log('customer-created');
                 await dispatch(
                     createPaymentIntent({
                         totalAmountCents,
@@ -121,15 +125,16 @@ const PaymentForm = () => {
                         paymentMethodId: paymentMethod.id,
                     })
                 );
+
                 setModalSuccess(true);
-                console.log(customerInfo);
             }
         } catch (error) {
             setError('Error processing payment');
             setModalError(true);
         }
     };
-    
+
+
 
     return (
         <>
@@ -217,7 +222,7 @@ const PaymentForm = () => {
                 <div className="error-message">{error}</div>
                 <CustomButton type="submit" className="pay-button" disabled={!stripe} text='Pay' />
             </form>
-            <ModalPayment show={modalSuccess || modalError} success={modalSuccess} onClose={handleModalClose} name={name} surname={surname} email={email} />
+            <ModalPayment show={modalSuccess || modalError} success={modalSuccess} onClose={handleModalClose} name={name} surname={surname} email={email} error={error} />
         </>
     );
 

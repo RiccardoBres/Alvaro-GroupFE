@@ -1,18 +1,15 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, createSelector } from "@reduxjs/toolkit";
 import axios from "axios";
-import { persistReducer } from "redux-persist";
-import storage from "redux-persist/lib/storage";
 
 const initialState = {
     isPaymentIntentLoading: false,
     paymentIntent: null,
     error: null,
-    customerInfo: [],
 };
 
 export const createPaymentIntent = createAsyncThunk(
     "paymentIntent/createPaymentIntent",
-    async (paymentInfo, { dispatch }) => {
+    async (paymentInfo) => {
         try {
             const response = await axios.post(
                 `${process.env.REACT_APP_SERVER_BASE_URL}/create-payment-intent`,
@@ -30,40 +27,14 @@ export const createPaymentIntent = createAsyncThunk(
     }
 );
 
-const paymentSlice = createSlice({
+export const paymentSlice = createSlice({
     name: "paymentState",
     initialState,
     reducers: {
-        setCustomerInfo: (state, action) => {
-            const { product, paymentId, customerInfo } = action.payload;
-            const existingCustomerInfo = state.customerInfo.find(
-                (info) => info.paymentId === paymentId
-            );
-            const orderDate = new Date();
-            if (existingCustomerInfo) {
-                Object.assign(existingCustomerInfo, {
-                    ...customerInfo,
-                    orderDate,
-                });
-            } else {
-                state.customerInfo.push({
-                    product,
-                    paymentId,
-                    ...customerInfo,
-                    orderDate,
-                    sent: false,
-                });
-            }
-        },
-        markItemAsSent: (state, action) => {
-            const paymentId = action.payload;
-            const existingCustomerInfo = state.customerInfo.find(info => info.paymentId === paymentId);
-            if (existingCustomerInfo) {
-                existingCustomerInfo.sent = true;
-            }
-        },
-        resetCustomerInfo: (state) => {
-            state.customerInfo = initialState.customerInfo;
+        resetPaymentState: (state) => {
+            state.isPaymentIntentLoading = initialState.isPaymentIntentLoading;
+            state.paymentIntent = initialState.paymentIntent;
+            state.error = initialState.error;
         },
     },
     extraReducers: (builder) => {
@@ -82,26 +53,12 @@ const paymentSlice = createSlice({
     },
 });
 
-const persistConfig = {
-    key: "root",
-    storage,
-    whitelist: ["customerInfo"],
-};
-
-const persistedReducer = persistReducer(persistConfig, paymentSlice.reducer);
-
-export const {
-    setCustomerInfo,
-    markItemAsSent,
-    resetCustomerInfo,
-} = paymentSlice.actions;
-
-
-
-export const isPaymentLoading = (state) =>
-    state.paymentState.isPaymentIntentLoading;
+export const isPaymentLoading = (state) => state.paymentState.isPaymentIntentLoading;
 export const PaymentIntent = (state) => state.paymentState.paymentIntent;
 export const PaymentError = (state) => state.paymentState.error;
-export const CustomerInfo = (state) => state.paymentState.customerInfo;
 
-export default persistedReducer;
+export const {
+    resetPaymentState,
+} = paymentSlice.actions;
+
+export default paymentSlice.reducer;

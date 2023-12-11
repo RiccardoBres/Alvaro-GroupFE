@@ -7,7 +7,6 @@ import PaymentForm from '../../Molecules/PaymentsMolecules/PaymentForm';
 import ResumCart from '../../Molecules/PaymentsMolecules/ResumCart';
 import './Checkout.css'
 
-console.log(process.env.REACT_APP_STRIPE_PUBLIC_KEY);
 const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY);
 
 const Checkout = () => {
