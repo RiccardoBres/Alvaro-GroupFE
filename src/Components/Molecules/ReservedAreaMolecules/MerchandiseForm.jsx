@@ -18,6 +18,7 @@ function MerchandiseForm() {
     price: '',
     size: '',
     image: null,
+    description: '',
   });
 
   const cleaner = () => {
@@ -25,7 +26,8 @@ function MerchandiseForm() {
       name: '',
       price: '',
       size: '',
-      image: null,
+      description: '',
+      image: '',
     });
   };
 
@@ -120,7 +122,19 @@ function MerchandiseForm() {
               />
             </div>
             <CustomButton text="Send" className="bn5" type="submit" />
+            <div className="mb-3">
+                <label htmlFor="merchInfo" className="form-label">Description</label>
+                <textarea
+                  className="form-control"
+                  name="description"
+                  id="description"
+                  rows="3"
+                  value={formData.description}
+                  onChange={handleChange}
+                ></textarea>
+              </div>
           </form>
+          
         )}
       </div>
       <ErrorModal error={errorMerch} show={show} onHide={handleClose} />

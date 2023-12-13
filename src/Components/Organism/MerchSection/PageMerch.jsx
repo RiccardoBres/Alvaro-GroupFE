@@ -46,7 +46,7 @@ const PageMerch = ({ merchId }) => {
                                     onClick={() => handleCart(merchDetails)}
                                     className='w-100'
                                 />
-                                <CustomParagraph text={loremIpsum} className='author-description' />
+                                <CustomParagraph text={merchDetails.description} className='author-description' />
                             </div>
                         </Col>
                     </>

@@ -24,14 +24,14 @@ export const getMerch = createAsyncThunk(
 export const getMerchById = createAsyncThunk(
     'merch/getMerchById',
     async (id) => {
-      try {
-        const response = await axios.get(`${process.env.REACT_APP_SERVER_BASE_URL}/merchandising/${id}`);
-        return response.data.merchById; 
-      } catch (error) {
-        throw error;
-      }
+        try {
+            const response = await axios.get(`${process.env.REACT_APP_SERVER_BASE_URL}/merchandising/${id}`);
+            return response.data.merchById;
+        } catch (error) {
+            throw error;
+        }
     }
-  );
+);
 
 
 export const createMerch = createAsyncThunk(
@@ -42,6 +42,7 @@ export const createMerch = createAsyncThunk(
         form.append("image", merch.image);
         form.append("size", merch.size);
         form.append("price", merch.price);
+        form.append("description", merch.description);
         try {
             const res = await axios.post(`${process.env.REACT_APP_SERVER_BASE_URL}/merch/create`, form, {
                 headers: {
@@ -114,6 +115,6 @@ const MerchSlice = createSlice({
 export const allMerch = (state) => state.merchState.merch;
 export const isMerchLoading = (state) => state.merchState.isMerchLoading;
 export const merchError = (state) => state.merchState.error;
-export const selectedMerch = (state) => state.merchState.selectedMerch; 
+export const selectedMerch = (state) => state.merchState.selectedMerch;
 
 export default MerchSlice.reducer;

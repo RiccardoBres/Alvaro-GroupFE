@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { FaPlus } from 'react-icons/fa'; // Importa l'icona plus da react-icons/fa
+import { FaPlus } from 'react-icons/fa'; 
 import CustomTitle from '../../Atoms/CustomTitle';
 import CustomButton from '../../Atoms/CustomButton';
 import CustomInput from '../../Atoms/CustomInput';

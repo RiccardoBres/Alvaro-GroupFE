@@ -37,8 +37,9 @@ const CartList = () => {
                                     <CustomParagraph text={item.quantity + 'x'} className='carrell-card-title' />
                                     <CustomParagraph text={item.name} className='carrell-card-title' />
                                 </div>
-                                <CustomParagraph text={item.size} className='carrell-card-title' />
+                                <hr className='hr-carrel'/>
                                 <CustomParagraph text={item.price + '$'} className='carrell-card-title' />
+                                <CustomParagraph text={item.size} className='carrell-card-title' />
                                 <div className="button-cart-d-b">
                                     <CustomButton onClick={() => handleRemoveFromCart(item)} text='Delete  ' />
                                     <CustomButton onClick={() => handleBuyItem(item)} text='Checkout' />

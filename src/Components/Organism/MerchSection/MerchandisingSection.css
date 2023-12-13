@@ -31,7 +31,6 @@
 }
 .container-details-merch .col-image{
     display: flex;
-    align-items: center;
     justify-content: end;
 }
 .container-details-merch .col-details{
@@ -40,7 +39,7 @@
     font-family: "Montserrat",sans-serif;
 }
 .container-details-merch img{
-    width: 80%;
+    width: 100%;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     margin: 5px;
 }
@@ -70,6 +69,7 @@
     flex-direction: column;
     overflow-y: scroll;
     max-height: 80vh;
+    height: 80vh;
     width: 100%;
 }
 .container-descr-details::-webkit-scrollbar{

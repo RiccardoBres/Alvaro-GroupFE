@@ -14,7 +14,6 @@ export const getCustomers = createAsyncThunk(
         try {
             const response = await axios.get(`${process.env.REACT_APP_SERVER_BASE_URL}/customers`);
             const data = await response.data;
-            console.log(data);
             return data;
         } catch (error) {
             console.error("An error occurred:", error);
@@ -24,7 +23,7 @@ export const getCustomers = createAsyncThunk(
 
 export const createCustomer = createAsyncThunk(
     'customer/createCustomer',
-    async (payload, { dispatch }) => {
+    async (payload) => {
         try {
             await axios.post(`${process.env.REACT_APP_SERVER_BASE_URL}/customers/create`, payload, {
                 headers: {
@@ -49,9 +48,11 @@ export const setOrderAsSent = createAsyncThunk(
     async (customerId) => {
         try {
             await axios.put(`${process.env.REACT_APP_SERVER_BASE_URL}/${customerId}/markAsSent`);
-            return customerId;
+            const response = await axios.get(`${process.env.REACT_APP_SERVER_BASE_URL}/customers`);
+            const data = response.data;
+            return data; 
         } catch (error) {
-            throw new Error(error); 
+            throw new Error(error);
         }
     }
 );
@@ -59,14 +60,6 @@ export const setOrderAsSent = createAsyncThunk(
 const CustomersSlice = createSlice({
     name: 'customerState',
     initialState,
-    reducers: {
-        setSent: (state) => {
-            state.sent = true;
-        },
-        setNotSent: (state) => {
-            state.sent = false;
-        },
-    },
     extraReducers: (builder) => {
         builder
             .addCase(getCustomers.pending, (state) => {
@@ -79,7 +72,10 @@ const CustomersSlice = createSlice({
             .addCase(getCustomers.rejected, (state) => {
                 state.isLoading = false;
                 state.error = "Failed to fetch merch";
-            });
+            })
+            .addCase(setOrderAsSent.fulfilled, (state, action) => {
+                state.customerData = action.payload; 
+            })
     },
 });
 

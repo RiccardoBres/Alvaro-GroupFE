@@ -35,17 +35,14 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-    margin: 10px 0;
     gap: 2rem;
 }
 .col-lives img{
     border-radius: 5px;
-    box-shadow: 10px 5px 10px rgb(162, 162, 162);
 }
 .col-lives h2 {
     font-size: 30px;
-    margin: 15px 0;
-    color: rgba(187, 63, 104, 0.653);
+    color: rgba(142, 22, 62, 0.653);
 }
 .live-card-info{
     display: flex;
@@ -102,7 +99,11 @@
     justify-content: center;
     flex-direction: column;
 }
+.lives-no-element p{
+    font-size: 23px;
+    font-weight: 300;
+}
 
-.ticketIcon{
-    font-size: 40px;
+.ticketIcon-lives{
+    font-size: 30px;
 }

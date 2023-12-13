@@ -17,7 +17,7 @@ const cartSlice = createSlice({
   },
   reducers: {
     addToCart: (state, action) => {
-      const { id, name, price, image } = action.payload;
+      const { id, name, price, image, size} = action.payload;
       const shippingCost = calculateShippingCost(price);
       const existingItem = state.cartItems.find((item) => item.id === id);
       if (existingItem) {
@@ -30,6 +30,7 @@ const cartSlice = createSlice({
           price,
           quantity: 1,
           shippingCost,
+          size
         });
       }
       state.totalPrice += price;
@@ -37,7 +38,7 @@ const cartSlice = createSlice({
       state.isCartOpen = true;
     },
     addToPurchase: (state, action) => {
-      const { id, name, price, image } = action.payload;
+      const { id, name, price, image, size } = action.payload;
       const shippingCost = calculateShippingCost(price);
       const cartItem = state.cartItems.find((item) => item.id === id);
       if (cartItem) {
@@ -46,6 +47,7 @@ const cartSlice = createSlice({
           id,
           name,
           price,
+          size,
           quantity: cartItem.quantity,
           shippingCost,
         };

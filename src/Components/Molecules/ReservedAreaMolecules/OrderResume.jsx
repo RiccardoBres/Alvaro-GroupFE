@@ -11,56 +11,61 @@ const OrderResume = () => {
     const customerInfo = useSelector(allCustomers) || [];
     const pendingOrders = customerInfo && customerInfo.customers ? customerInfo.customers.filter(info => !info.sent) : [];
     const sentOrders = customerInfo && customerInfo.customers ? customerInfo.customers.filter(info => info.sent) : [];
-    
+
 
     const handleMarkAsSent = (customerId) => {
         dispatch(setOrderAsSent(customerId));
     };
 
-    
+
     useEffect(() => {
         dispatch(getCustomers());
     }, [dispatch]);
-    
-    useEffect(() => {
-        console.log("Customer data:", customerInfo);
-        console.log("Pending orders:", pendingOrders);
-        console.log("Sent orders:", sentOrders);
-    }, [customerInfo, pendingOrders, sentOrders]);
-    
+
+
 
     return (
         <div className='container-order-resume mt-5'>
-            <CustomTitle text='Pending Shipment' />
             <ul className='order-list'>
+            <CustomTitle text='Pending Shipment' />
                 {pendingOrders.map(info => (
                     <li key={info.id} className='order-item'>
                         <div className='order-details' key={info.id}>
-                            <CustomParagraph text={`Name: ${info.name ?? 'N/A'}`} />
-                            <CustomParagraph text={`Surname: ${info.surname ?? 'N/A'}`} />
-                            <CustomParagraph text={`Email: ${info.email ?? 'N/A'}`} />
-                            <CustomParagraph text={`Address: ${info.address ?? 'N/A'}`} />
-                            <CustomParagraph text={`Postal: ${info.postal ?? 'N/A'}`} />
-                            <CustomParagraph text={`Product: ${info.purchases[0]?.name ?? 'N/A'}`} />
-                            <CustomParagraph text={`Price: ${info.purchases[0]?.price ?? 'N/A'}`} />
+                            <div className="customer-details">
+                                <CustomTitle text='Customer Details' />
+                                <CustomParagraph text={`Name: ${info.name ?? 'N/A'}`} />
+                                <CustomParagraph text={`Surname: ${info.surname ?? 'N/A'}`} />
+                                <CustomParagraph text={`Email: ${info.email ?? 'N/A'}`} />
+                            </div>
+                            <div className="customer-product">
+                                <CustomTitle text='Customer Product' />
+                                <CustomParagraph text={`Product: ${info.purchases[0]?.name ?? 'N/A'}`} />
+                                <CustomParagraph text={`Price: ${info.purchases[0]?.price ?? 'N/A'}`} />
+                            </div>
                         </div>
-                        <CustomButton
-                            text='Mark as Sent'
-                            onClick={() => handleMarkAsSent(info._id)}
-                        />
+                            <CustomButton
+                                text='Mark as Sent'
+                                onClick={() => handleMarkAsSent(info._id)}
+                            />
                     </li>
                 ))}
             </ul>
-            <CustomTitle text='Sent Orders' />
             <ul className='order-list'>
+            <CustomTitle text='Sent Orders' />
                 {sentOrders.map(info => (
                     <li key={info.id} className='order-item'>
                         <div className='order-details' key={info.id}>
-                            <CustomParagraph text={`Name: ${info.name ?? 'N/A'}`} />
-                            <CustomParagraph text={`Surname: ${info.surname ?? 'N/A'}`} />
-                            <CustomParagraph text={`Email: ${info.email ?? 'N/A'}`} />
-                            <CustomParagraph text={`Product: ${info.purchases[0]?.name ?? 'N/A'}`} />
-                            <CustomParagraph text={`Price: ${info.purchases[0]?.price ?? 'N/A'}`} />
+                            <div className="customer-details">
+                                <CustomTitle text='Customer Details' />
+                                <CustomParagraph text={`Name: ${info.name ?? 'N/A'}`} />
+                                <CustomParagraph text={`Surname: ${info.surname ?? 'N/A'}`} />
+                                <CustomParagraph text={`Email: ${info.email ?? 'N/A'}`} />
+                            </div>
+                            <div className="customer-product">
+                                <CustomTitle text='Customer Product' />
+                                <CustomParagraph text={`Product: ${info.purchases[0]?.name ?? 'N/A'}`} />
+                                <CustomParagraph text={`Price: ${info.purchases[0]?.price ?? 'N/A'}`} />
+                            </div>
                         </div>
                     </li>
                 ))}

@@ -1,7 +1,13 @@
 .center-carousel {
-  margin: 0 auto; 
-  width: 60%; 
+  width: 80%; 
+  margin-top: 50px;
 }
+.center-carousel .row{
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
 .container.image-event-desci{
   display: flex;
   align-items: center;
@@ -10,11 +16,13 @@
 .center-carousel h2{
   color: rgb(39, 20, 27);
 }
-
+.image-event-page{
+  width: auto;
+}
 .intro-car-desci{
-  display: flex!important;
-  justify-content: center!important;
-  gap: 3rem!important;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
 }
 .container-location{
   display: flex;
@@ -23,15 +31,15 @@
   justify-content: center;
 }
 .container-location h2{
-  color: rgba(120, 29, 60, 0.653);
+  color: #251b1b;
 
 }
 .container-location p {
   margin: 0;
-  color: rgba(100, 33, 55, 0.653);
+  color:#251b1b;
 }
 .container-location .locationIcon{
-  color: rgba(120, 29, 60, 0.653);
+  color: #251b1b;
 }
 @media (max-width: 450px) {
   .center-carousel {
@@ -47,7 +55,11 @@
     gap: 1rem!important;
   }
   .image-event{
-    width: 50%;
+    width: 90%;
+    box-shadow: none!important;
+  }
+  .description-event{
+    margin: 0!important;
   }
 }
 .image-event{
@@ -56,4 +68,21 @@
 .slick-prev:before, .slick-next:before {
   color: #7b6767!important;
   
+}
+
+.description-event{
+  text-align: center;
+  overflow-y: auto;
+  max-height: 50vh;
+  padding: 20px;
+  border-radius: 15px;
+  height: auto;
+}
+.description-event::-webkit-scrollbar{
+  display: none;
+}
+.description-event h2{
+  font-size: 20px;
+    margin: 15px 0;
+    color: rgba(110, 8, 42, 0.653);
 }

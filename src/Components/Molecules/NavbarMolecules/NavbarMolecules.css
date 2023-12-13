@@ -97,6 +97,7 @@
 
 .carrell-card-image {
     width: 50%;
+    height: 100%;
 }
 
 .carrell-card-title {
@@ -138,7 +139,13 @@
         align-items: start;
     }
     .offCanvas-cart{
-        width: 100%!important;
+        width: 80%!important;
     }
 
+}
+
+.hr-carrel{
+   color: white;
+   width: 100%; 
+   margin: 0;
 }
