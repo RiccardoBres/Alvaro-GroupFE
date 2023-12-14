@@ -12,16 +12,16 @@ import { faTicket } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import CustomParagraph from '../../Atoms/CustomParagraph';
 import CustomImage from '../../Atoms/CustomImage';
-import EventCarousel from '../../Molecules/CarouselEventMolecules/EventCarousel'
+import EventCarousel from '../../Molecules/CarouselEventMolecules/EventCarousel';
 
 const NextLives = () => {
     const dispatch = useDispatch();
-    const { events } = useSelector((state) => allEvents(state)) || { events: [] };
+    const { events = [] } = useSelector(allEvents) || {};
     const loading = useSelector(isLoading);
 
     useEffect(() => {
         dispatch(getEvents());
-    }, [dispatch, events]);
+    }, [dispatch]);
 
     const upcomingEvents = events
         ? events
@@ -40,24 +40,18 @@ const NextLives = () => {
         <Container fluid className='container-lives'>
             {loading ? (
                 <Row>
-                    {upcomingEvents.map((event, index) => (
-                        <Col lg={12} md={12} sm={12} key={index}>               
-                                <>
-                                    <CustomTitle text='GROUP NAME' className='title' />
-                                    <EventCarousel events={upcomingEvents} show={true} />
-                                </>
-                            
-                        </Col>
-                    ))}
+                    <Col lg={12} md={12} sm={12}>
+                        <>
+                            <CustomTitle text='GROUP NAME' className='title' />
+                            <EventCarousel events={upcomingEvents} show={true} />
+                        </>
+                    </Col>
                 </Row>
             ) : upcomingEvents.length > 0 ? (
-                <>
-                    <Row>
-                            <CustomTitle text='GROUP NAME' className='title mb-1' />
-                            <EventCarousel events={upcomingEvents} show={true} showInfo={false} />
-                    </Row>
-
-                </>
+                <Row>
+                    <CustomTitle text='GROUP NAME' className='title mb-1' />
+                    <EventCarousel events={upcomingEvents} show={true} showInfo={false} />
+                </Row>
             ) : (
                 <Row className='lives-no-element text-center'>
                     <CustomTitle text='GROUP NAME' className='title' />
@@ -72,4 +66,3 @@ const NextLives = () => {
 };
 
 export default NextLives;
-

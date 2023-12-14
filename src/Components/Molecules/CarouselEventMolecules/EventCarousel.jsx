@@ -4,12 +4,12 @@ import IntroCarousel from '../CarouselEventMolecules/IntroCarousel'
 import CustomImage from '../../Atoms/CustomImage';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import { Col, Container, Row } from 'react-bootstrap';
+import { Col, Container, Overlay, Row } from 'react-bootstrap';
 import './EventCarousel.css';
 import CustomParagraph from '../../Atoms/CustomParagraph';
 import CustomTitle from '../../Atoms/CustomTitle';
 
-const EventCarousel = ({ events, show, showInfo }) => {
+const EventCarousel = ({ events, show, showInfo, className }) => {
     const settings = {
         dots: true,
         infinite: true,
@@ -42,10 +42,10 @@ const EventCarousel = ({ events, show, showInfo }) => {
             <Slider {...settings}>
                 {events.map((event, index) => (
                     <>
-                        <Row>
-                            <Col lg={showInfo ? 12 : 4} md={6} sm={6} className='col-lives'>
+                        <Row className='car-row'>
+                            <Col lg={showInfo ? 12 : 4} md={6} sm={6}>
                                 <div className='intro-car-desci'>
-                                    {showInfo && <IntroCarousel eventsData={event} />}
+                                    {showInfo && <IntroCarousel eventsData={event} className='overlay-carousel' />}
                                     <CustomImage
                                         src={event.image}
                                         alt={event.title}

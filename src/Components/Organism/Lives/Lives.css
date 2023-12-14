@@ -31,12 +31,7 @@
     width: 50%;
     height: 50%;
 }
-.col-lives{
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    gap: 2rem;
-}
+
 .col-lives img{
     border-radius: 5px;
 }

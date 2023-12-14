@@ -1,78 +1,98 @@
 .center-carousel {
-  width: 80%; 
+  width: 80%;
   margin-top: 50px;
   padding-bottom: 50px;
 }
-.center-carousel .row{
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
+
+
+
+.center-carousel h2 {
+  color: rgba(244, 240, 241, 0.78);
+  ;
 }
 
-.container.image-event-desci{
+.image-event {
+  width: 30%;
+}
+
+.image-event-page {
+  width: 70%;
+}
+
+.intro-car-desci {
   display: flex;
+  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-}
-.center-carousel h2{
-  color: rgb(39 20 27 / 78%);;
-}
-.image-event-page{
-  width: auto;
-}
-.intro-car-desci{
-  display: flex;
-  justify-content: center;
   gap: 2rem;
 }
-.container-location{
+
+.container-location {
   display: flex;
   align-items: center;
   gap: 0.5rem;
   justify-content: center;
 }
-.container-location h2{
-  color: #251b1b;
 
-}
-.container-location p {
-  margin: 0;
-  color:#251b1b;
-}
-.container-location .locationIcon{
+.container-location .locationIcon {
   color: #7b6767;
   font-size: 20px;
 }
+
 @media (max-width: 450px) {
   .center-carousel {
-    max-width: 100%; 
+    max-width: 100%;
   }
-  .center-carousel h2{
+
+  .center-carousel h2 {
     font-size: 20px;
   }
-  .intro-car-desci{
-    flex-direction: column!important;
-    align-items: center!important;
-    justify-content: center!important;
-    gap: 1rem!important;
+
+  .intro-car-desci {
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 1rem !important;
+    position: relative;
   }
-  .image-event{
+
+  .image-event {
     width: 90%;
-    box-shadow: none!important;
+    box-shadow: none !important;
   }
-  .description-event{
-    margin: 0!important;
+
+  .description-event {
+    margin: 0 !important;
   }
-}
-.image-event{
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-}
-.slick-prev:before, .slick-next:before {
-  color: #7b6767!important;
-  
 }
 
-.description-event{
+.image-event {
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.slick-prev:before,
+.slick-next:before {
+  color: #423636 !important;
+
+}
+
+
+.overlay-carousel {
+  position: absolute;
+    top: 0;
+    left: 100;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.intro-car-desci:hover .overlay-carousel {
+  opacity: 0;
+}
+
+
+.description-event {
   text-align: center;
   overflow-y: auto;
   max-height: 50vh;
@@ -80,15 +100,25 @@
   border-radius: 15px;
   height: auto;
 }
-.description-event::-webkit-scrollbar{
+
+.description-event p {
+  font-size: 15px!important;
+  margin-top: 15px;
+  color: rgb(55 54 54);
+    
+}
+
+.description-event::-webkit-scrollbar {
   display: none;
 }
-.description-event h2{
+
+.description-event h2 {
   font-size: 20px;
-    margin: 15px 0;
-    color: rgba(110, 8, 42, 0.653);
+  margin: 15px 0;
+  color: rgba(110, 8, 42, 0.653);
 }
-.ticketIcon{
+
+.ticketIcon {
   font-size: 30px;
   color: #7b6767;
 }
