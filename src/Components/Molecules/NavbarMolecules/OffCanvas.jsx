@@ -16,6 +16,7 @@ const OffCanvas = ({ show, onHide }) => {
     const handleHome = () => {navigate('/')};
     const handleMerch =()=>{navigate('/merchandising')};
     const handleLive =()=>{navigate('/live')};
+    const handleContacts =()=>{navigate('/contacts')}
 
 
     return (
@@ -25,8 +26,7 @@ const OffCanvas = ({ show, onHide }) => {
                     <Nav.Link className='link-ofCanvas-left' onClick={handleHome} >Home</Nav.Link>
                     <Nav.Link className='link-ofCanvas-left' onClick={handleMerch}>Merch</Nav.Link>
                     <Nav.Link className='link-ofCanvas-left' onClick={handleLive}>Live</Nav.Link>
-                    <Nav.Link className='link-ofCanvas-left' href="#video">Video</Nav.Link>
-                    <Nav.Link className='link-ofCanvas-left' href="#contact">Contact</Nav.Link>
+                    <Nav.Link className='link-ofCanvas-left' onClick={handleContacts}>Contact</Nav.Link>
                 </Nav>
                 <div className="social-icons-offCanvas">
                     <FontAwesomeIcon icon={faSpotify} />
