@@ -23,13 +23,13 @@ const PaymentForm = () => {
     const customerInfo = useSelector((state) => state.paymentState.customerInfo);
 
 
-    const [name, setName] = useState(customerInfo.name || '');
-    const [surname, setSurname] = useState(customerInfo.surname || '');
-    const [email, setEmail] = useState(customerInfo.email || '');
-    const [confirmEmail, setConfirmEmail] = useState(customerInfo.email || '');
-    const [address, setAddress] = useState(customerInfo.address || '');
-    const [postal, setPostal] = useState(customerInfo.postal || '');
-    const [city, setCity] = useState(customerInfo.city || '');
+    const [name, setName] = useState(customerInfo?.name || '');
+    const [surname, setSurname] = useState(customerInfo?.surname || '');
+    const [email, setEmail] = useState(customerInfo?.email || '');
+    const [confirmEmail, setConfirmEmail] = useState(customerInfo?.email || '');
+    const [address, setAddress] = useState(customerInfo?.address || '');
+    const [postal, setPostal] = useState(customerInfo?.postal || '');
+    const [city, setCity] = useState(customerInfo?.city || '');
     const [error, setError] = useState('');
     const [modalSuccess, setModalSuccess] = useState(false);
     const [termsAccepted, setTermsAccepted] = useState(false);
@@ -104,7 +104,6 @@ const PaymentForm = () => {
                 setError(error.message);
                 setModalError(true);
             } else {
-                console.log("cartPurchase:", cartPurchase);
                 await dispatch(
                     createCustomer({
                         name,
