@@ -8,6 +8,7 @@ import MerchandisingPage from './Pages/Mechandising/MerchandisingPage';
 import MerchandisingList from './Pages/Mechandising/MerchandisingList';
 import PaymentsPage from './Pages/Payments/PaymentsPage';
 import LivesPage from './Pages/Lives/LivesPage';
+import Contacts from './Pages/Contacts/Contacts';
 
 const ScrollToTop = () => {
     const { pathname } = useLocation();
@@ -28,6 +29,7 @@ const App = () => {
                 <Route path="merchandising" element={<MerchandisingList />} />
                 <Route path="live" element={<LivesPage />} />
                 <Route path="purchase" element={<PaymentsPage />} />
+                <Route path="contacts" element={<Contacts/>} />
                 <Route element={<ProtectedRoutes />}>
                     <Route path="reserved" element={<ReservedPage />} />
                 </Route>

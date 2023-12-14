@@ -1,15 +1,14 @@
 .card-merch {
     position: relative;
-    display: inline-block;
 }
 
 .merch-image {
     max-width: 85vw;
     width: 22vw;
     min-height: 20vw;
-    position: relative;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     max-height: 20vw;
+    transition: box-shadow 0.3s;
 }
 
 .overlay {
@@ -59,9 +58,7 @@
     padding: 10px;
 }
 
-.card-merch:hover .merch-image {
-    box-shadow: none;
-}
+
 
 @media (max-width: 768px) {
     .overlay {
@@ -75,8 +72,8 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        height: 100%;
     }
-
     .card-merch {
         display: flex;
         align-items: center;
@@ -84,35 +81,29 @@
         flex-direction: column;
         gap: 1rem;
     }
+    .merch-image {
+        width: auto;
+    }
+    
     .merch-title {
         font-size: 14px;
     }
-
     .col-merch-img {
-        width: 50%;
+        width: 100% !important;
         display: flex;
         align-items: center;
         justify-content: center;
     }
-
     .card-merch:hover .overlay {
         background-color: transparent;
-        position: static;
-
+        
     }
-
-    .overlay {
-        height: 100%;
-    }
-
     .card-merch .merch-details {
-       opacity: 1;
+        transform: none !important;
+        opacity: 1;
     }
-    .card-merch:hover .merch-image{
-
-    }
-    .card-merch:hover .merch-details{
-        transform: none;
-        transition: none;
+    .card-merch:hover .merch-details {
+        transform: none !important;
+        transition: none !important;
     }
 }

@@ -40,10 +40,7 @@
 .col-lives img{
     border-radius: 5px;
 }
-.col-lives h2 {
-    font-size: 30px;
-    color: rgba(142, 22, 62, 0.653);
-}
+
 .live-card-info{
     display: flex;
     flex-direction: column;

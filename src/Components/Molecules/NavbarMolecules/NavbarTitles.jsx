@@ -10,6 +10,7 @@ const NavbarTitles = () => {
   const handleHome =()=>{navigate('/')};
   const handleMerch =()=>(navigate('/merchandising'));
   const handleLive =()=>(navigate('/live'))
+  const handleContacts =()=>(navigate('/contacts'))
   const handleLogout = () => {
     logout();
     navigate('/');
@@ -20,8 +21,7 @@ const NavbarTitles = () => {
         <CustomParagraph onClick={handleHome} text="Home" className="title-nav" />
         <CustomParagraph text="Merch" onClick={handleMerch} className="title-nav" />
         <CustomParagraph text="Live" onClick={handleLive} className="title-nav" />
-        <CustomParagraph text="Video" className="title-nav" />
-        <CustomParagraph text="Contact" className="title-nav" />
+        <CustomParagraph text="Contact" onClick={handleContacts} className="title-nav" />
         {session.isAuthenticated == true ? <CustomParagraph text='Logout' className="title-nav" onClick={handleLogout}/> : null }
       </div>
     </>

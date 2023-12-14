@@ -17,7 +17,7 @@ const CarouselEvent = () => {
   return (
     <>
       <Container fluid className='carousel-section'>
-          <CustomTitle text='Live Dates' className='event-title'/>
+            <CustomTitle className='title-carousel-event' text='Group Name'/>
             {Array.isArray(events)  && <EventCarousel events={events} showInfo={true} />}
       </Container>
     </>

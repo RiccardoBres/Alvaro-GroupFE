@@ -39,7 +39,7 @@ const PageMerch = ({ merchId }) => {
                         </Col>
                         <Col lg={6} key={nanoid()} md={6} sm={12} className='col-details'>
                             <div className="container-descr-details">
-                                <CustomParagraph text={merchDetails.name} />
+                                <CustomParagraph text={merchDetails.name} className='title' />
                                 <CustomParagraph text={'€' + merchDetails.price} />
                                 <CustomButton
                                     text='Add to cart'

@@ -1,6 +1,7 @@
 .center-carousel {
   width: 80%; 
   margin-top: 50px;
+  padding-bottom: 50px;
 }
 .center-carousel .row{
   display: flex;
@@ -14,7 +15,7 @@
   justify-content: center;
 }
 .center-carousel h2{
-  color: rgb(39, 20, 27);
+  color: rgb(39 20 27 / 78%);;
 }
 .image-event-page{
   width: auto;
@@ -39,7 +40,8 @@
   color:#251b1b;
 }
 .container-location .locationIcon{
-  color: #251b1b;
+  color: #7b6767;
+  font-size: 20px;
 }
 @media (max-width: 450px) {
   .center-carousel {
@@ -85,4 +87,8 @@
   font-size: 20px;
     margin: 15px 0;
     color: rgba(110, 8, 42, 0.653);
+}
+.ticketIcon{
+  font-size: 30px;
+  color: #7b6767;
 }
