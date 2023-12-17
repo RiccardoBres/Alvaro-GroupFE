@@ -25,10 +25,8 @@ const ModalLogin = ({ showModal, setShowModal }) => {
                 setErrorLogin('Invalid password');
             } else {
                 setShowModal(false);
-                console.log('Login success:', response);
             }
         } catch (error) {
-            console.error('Login error:', error);
         }
     };
 

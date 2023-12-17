@@ -36,7 +36,6 @@ export const createCustomer = createAsyncThunk(
 
             return data;
         } catch (error) {
-            console.error("An error occurred:", error);
             throw new Error("Failed to create customer");
         }
     }
@@ -83,6 +82,6 @@ export const allCustomers = (state) => state.customerState.customerData;
 export const isCustomerLoading = (state) => state.customerState.isLoading;
 export const customerError = (state) => state.customerState.error;
 
-export const { setSent, setNotSent } = CustomersSlice.actions; // Esporta le azioni
+export const { setSent, setNotSent } = CustomersSlice.actions; 
 
 export default CustomersSlice.reducer;

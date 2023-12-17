@@ -12,6 +12,9 @@ import CustomParagrapher from '../../Atoms/CustomParagraph';
 import CustomTitle from '../../Atoms/CustomTitle';
 import ModalPayment from './ModalPayment';
 import './PaymentsMolecules.css';
+import emailjs from 'emailjs-com';
+
+emailjs.init(process.env.REACT_APP_USER_ID);
 
 const PaymentForm = () => {
     const stripe = useStripe();
@@ -99,7 +102,6 @@ const PaymentForm = () => {
                     email: email,
                 },
             });
-
             if (error) {
                 setError(error.message);
                 setModalError(true);
@@ -115,8 +117,6 @@ const PaymentForm = () => {
                         purchases: cartPurchase[0],
                     })
                 );
-                
-                console.log('customer-created');
                 await dispatch(
                     createPaymentIntent({
                         totalAmountCents,
@@ -124,7 +124,19 @@ const PaymentForm = () => {
                         paymentMethodId: paymentMethod.id,
                     })
                 );
-
+                const recipientEmail = email;
+                emailjs.send(
+                    process.env.REACT_APP_SERVICE_ID,
+                    process.env.REACT_APP_TEMPLATE_ID,
+                    { email: recipientEmail, order: cartPurchase[0]},
+                    process.env.REACT_APP_USER_ID
+                )
+                    .then((response) => {
+                        console.log('SUCCESS!', response.status, response.text);
+                    })
+                    .catch((err) => {
+                        console.error('FAILED...', err);
+                    });
                 setModalSuccess(true);
             }
         } catch (error) {
@@ -132,7 +144,6 @@ const PaymentForm = () => {
             setModalError(true);
         }
     };
-
 
 
     return (

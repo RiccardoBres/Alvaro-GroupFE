@@ -1,18 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { FaPlus } from 'react-icons/fa'; 
+import { FaPlus } from 'react-icons/fa';
 import CustomTitle from '../../Atoms/CustomTitle';
 import CustomButton from '../../Atoms/CustomButton';
 import CustomInput from '../../Atoms/CustomInput';
 import { createEvent, isLoading, eventError, resetEventError } from '../../../States/EventState';
+import { allEmail } from '../../../States/MailingState';
 import ErrorModal from './ErrorModal';
 import './ReservedArea.css';
+import emailjs from 'emailjs-com';
+
+emailjs.init(process.env.REACT_APP_USER_ID);
+
 
 function EventForm() {
   const dispatch = useDispatch();
   const isEventLoading = useSelector((state) => isLoading(state));
   const errorEvent = useSelector((state) => eventError(state));
   const [show, setShow] = useState(false);
+  const emails = useSelector(allEmail)
   const [formVisible, setFormVisible] = useState(false);
 
   const [formData, setFormData] = useState({
@@ -53,6 +59,22 @@ function EventForm() {
     e.preventDefault();
     dispatch(createEvent(formData));
     cleaner();
+
+    const toList = emails.mailingList.map(email => email.email);
+    toList.forEach(recipientEmail => {
+      emailjs.send(
+        process.env.REACT_APP_SERVICE_ID,
+        process.env.REACT_APP_TEMPLATE_ID,
+        { email: recipientEmail, event: formData },
+        process.env.REACT_APP_USER_ID
+      )
+        .then((response) => {
+          console.log('SUCCESS!', response.status, response.text);
+        })
+        .catch((err) => {
+          console.error('FAILED...', err);
+        });
+    });
   };
 
   const handleClose = () => {
@@ -77,7 +99,7 @@ function EventForm() {
           <FaPlus size={30} onClick={handleIconClick} />
           <CustomTitle text="Add new event" />
         </div>
-        <hr/>
+        <hr />
         <div className="form-container">
           {formVisible && (
             <form className='form' onSubmit={handleSubmit} encType="multipart/form-data">

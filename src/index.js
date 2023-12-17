@@ -10,36 +10,38 @@ import merchState from './States/MerchState';
 import cartState from './States/CarrelState';
 import paymentState from './States/PaymentState';
 import customerState from './States/CustomerState';
+import mailingState from './States/MailingState'
 import { persistStore } from 'redux-persist';
 import { PersistGate } from 'redux-persist/integration/react';
 import createPersistor from './States/persistConfig';
 
 const rootReducer = combineReducers({
- eventState: eventState,
- merchState: merchState,
- cartState: cartState,
- paymentState: paymentState,
- customerState : customerState,
+  eventState: eventState,
+  merchState: merchState,
+  cartState: cartState,
+  mailingState: mailingState,
+  paymentState: paymentState,
+  customerState: customerState,
 });
 
 const customizedMiddleware = getDefaultMiddleware({
- serializableCheck: false,
+  serializableCheck: false,
 });
 
 const store = configureStore({
- reducer: createPersistor(rootReducer),
- middleware: customizedMiddleware,
+  reducer: createPersistor(rootReducer),
+  middleware: customizedMiddleware,
 });
 
 const persistor = persistStore(store);
 
 const root = createRoot(document.getElementById('root'));
 root.render(
- <React.StrictMode>
-   <Provider store={store}>
-     <PersistGate loading={null} persistor={persistor}>
-       <App />
-     </PersistGate>
-   </Provider>
- </React.StrictMode>
+  <React.StrictMode>
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <App />
+      </PersistGate>
+    </Provider>
+  </React.StrictMode>
 );

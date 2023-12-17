@@ -21,7 +21,6 @@ const OffCanvasCart = () => {
     const handleResetCart = () => {
         dispatch(resetCart());
     };
-    console.log(cartItems);
 
     const handleClose = () => {
         dispatch(setCartClose());

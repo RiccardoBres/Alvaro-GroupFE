@@ -5,10 +5,17 @@ import CustomTitle from '../../Atoms/CustomTitle';
 import CustomButton from '../../Atoms/CustomButton';
 import './ReservedArea.css';
 import ErrorModal from './ErrorModal';
-import { allMerch, merchError, resetMerchError, createMerch } from '../../../States/MerchState';
+import { merchError, resetMerchError, createMerch } from '../../../States/MerchState';
+import { allEmail, getEmails } from '../../../States/MailingState';
+import emailjs from 'emailjs-com';
+import { send } from 'emailjs-com';
+
+emailjs.init(process.env.REACT_APP_USER_ID);
+
 
 function MerchandiseForm() {
   const dispatch = useDispatch();
+  const emails = useSelector(allEmail);
   const [show, setShow] = useState(false);
   const errorMerch = useSelector((state) => merchError(state));
   const [formVisible, setFormVisible] = useState(false);
@@ -51,22 +58,40 @@ function MerchandiseForm() {
     e.preventDefault();
     dispatch(createMerch(formData));
     cleaner();
+  
+    const toList = emails.mailingList.map(email => email.email);
+    console.log(toList);
+    toList.forEach(recipientEmail => {
+      send(
+        process.env.REACT_APP_SERVICE_ID,
+        process.env.REACT_APP_TEMPLATE_ID,
+        { email: recipientEmail, merchandising: formData },
+        process.env.REACT_APP_USER_ID
+      )
+      .then((response) => {
+        console.log('SUCCESS!', response.status, response.text);
+      })
+      .catch((err) => {
+        console.error('FAILED...', err);
+      });
+    });    
   };
+  
+
 
   const handleClose = () => {
     setShow(false);
     dispatch(resetMerchError());
   };
-
   const handleIconClick = () => {
     setFormVisible(!formVisible);
   };
-
   useEffect(() => {
-    if (errorMerch) {
-      setShow(true);
+    dispatch(getEmails())
+    if (emails) {
+      console.log(emails.mailingList)
     }
-  }, [errorMerch]);
+  }, [])
 
   return (
     <>
@@ -75,7 +100,7 @@ function MerchandiseForm() {
           <FaPlus size={30} onClick={handleIconClick} />
           <CustomTitle text="Add new merchandising" />
         </div>
-        <hr/>
+        <hr />
         {formVisible && (
           <form className='form' onSubmit={handleSubmit} encType="multipart/form-data">
             <div className="mb-3">
@@ -123,18 +148,17 @@ function MerchandiseForm() {
             </div>
             <CustomButton text="Send" className="bn5" type="submit" />
             <div className="mb-3">
-                <label htmlFor="merchInfo" className="form-label">Description</label>
-                <textarea
-                  className="form-control"
-                  name="description"
-                  id="description"
-                  rows="3"
-                  value={formData.description}
-                  onChange={handleChange}
-                ></textarea>
-              </div>
+              <label htmlFor="merchInfo" className="form-label">Description</label>
+              <textarea
+                className="form-control"
+                name="description"
+                id="description"
+                rows="3"
+                value={formData.description}
+                onChange={handleChange}
+              ></textarea>
+            </div>
           </form>
-          
         )}
       </div>
       <ErrorModal error={errorMerch} show={show} onHide={handleClose} />

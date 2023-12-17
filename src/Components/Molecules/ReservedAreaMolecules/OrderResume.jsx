@@ -29,8 +29,8 @@ const OrderResume = () => {
             <ul className='order-list'>
             <CustomTitle text='Pending Shipment' />
                 {pendingOrders.map(info => (
-                    <li key={info.id} className='order-item'>
-                        <div className='order-details' key={info.id}>
+                    <li key={info._id} className='order-item'>
+                        <div className='order-details'>
                             <div className="customer-details">
                                 <CustomTitle text='Customer Details' />
                                 <CustomParagraph text={`Name: ${info.name ?? 'N/A'}`} />
@@ -53,8 +53,8 @@ const OrderResume = () => {
             <ul className='order-list'>
             <CustomTitle text='Sent Orders' />
                 {sentOrders.map(info => (
-                    <li key={info.id} className='order-item'>
-                        <div className='order-details' key={info.id}>
+                    <li key={info._id} className='order-item'>
+                        <div className='order-details'>
                             <div className="customer-details">
                                 <CustomTitle text='Customer Details' />
                                 <CustomParagraph text={`Name: ${info.name ?? 'N/A'}`} />

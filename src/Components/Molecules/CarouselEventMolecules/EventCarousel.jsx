@@ -39,32 +39,30 @@ const EventCarousel = ({ events, show, showInfo, className }) => {
 
     return (
         <Container fluid className="center-carousel">
-            <Slider {...settings}>
-                {events.map((event, index) => (
-                    <>
-                        <Row className='car-row'>
-                            <Col lg={showInfo ? 12 : 4} md={6} sm={6}>
-                                <div className='intro-car-desci'>
-                                    {showInfo && <IntroCarousel eventsData={event} className='overlay-carousel' />}
-                                    <CustomImage
-                                        src={event.image}
-                                        alt={event.title}
-                                        className={`image-event ${showInfo ? 'image-event' : 'image-event-page'}`}
-                                    />
-                                </div>
-                            </Col>
-                            {show && (
-                                <Col lg={8} md={6} sm={6} key={`${index}-general-info`} className="description-event">
-                                    <CustomTitle text={event.name} />
-                                    <hr />
-                                    <CustomParagraph text={event.generalInfo} />
-                                </Col>
-                            )}
-                        </Row>
-                    </>
+          <Slider {...settings}>
+    {events.map((event, index) => (
+        <Row key={index} className='car-row'> 
+            <Col lg={showInfo ? 12 : 4} md={6} sm={6}>
+                <div className='intro-car-desci'>
+                    {showInfo && <IntroCarousel eventsData={event} className='overlay-carousel' />}
+                    <CustomImage
+                        src={event.image}
+                        alt={event.title}
+                        className={`image-event ${showInfo ? 'image-event' : 'image-event-page'}`}
+                    />
+                </div>
+            </Col>
+            {show && (
+                <Col lg={8} md={6} sm={6} key={`${index}-general-info`} className="description-event">
+                    <CustomTitle text={event.name} />
+                    <hr />
+                    <CustomParagraph text={event.generalInfo} />
+                </Col>
+            )}
+        </Row>
+    ))}
+</Slider>
 
-                ))}
-            </Slider>
         </Container>
     );
 };
