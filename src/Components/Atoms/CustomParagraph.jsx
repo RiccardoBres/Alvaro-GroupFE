@@ -11,6 +11,4 @@ const CustomParagraph = ({ text, className, onClick }) => {
 
 export default CustomParagraph;
 
-{/* 
-<CustomParagraph text="Questo è un paragrafo" className="****" />
- */}
+

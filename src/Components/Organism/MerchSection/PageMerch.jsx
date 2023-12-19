@@ -16,13 +16,11 @@ const PageMerch = ({ merchId }) => {
     const merchDetails = useSelector((state) => selectedMerch(state));
     const handleCart = (item) => {
         dispatch(addToCart({ id: item._id, name: item.name, price: item.price, image: item.image }));
-        console.log(item._id);
     };
 
     useEffect(() => {
         if (merchId) {
             dispatch(getMerchById(merchId));
-            console.log(merchId);
         }
         dispatch(resetMerch());
 

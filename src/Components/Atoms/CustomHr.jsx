@@ -6,6 +6,3 @@ const CustomHr = ({ className }) => {
 
 export default CustomHr;
 
-/*    
-<CustomHr className="****" />
- */

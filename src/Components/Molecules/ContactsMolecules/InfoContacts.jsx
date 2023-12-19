@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaEnvelope, FaWhatsapp } from 'react-icons/fa'; // Import necessary icons
+import { FaEnvelope, FaWhatsapp } from 'react-icons/fa'; 
 import CustomParagraph from '../../Atoms/CustomParagraph';
 import CustomTitle from '../../Atoms/CustomTitle';
 import './InfoContacts.css';

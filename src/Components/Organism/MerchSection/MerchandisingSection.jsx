@@ -12,6 +12,8 @@ const MerchandisingSection = () => {
     const loading = useSelector(isMerchLoading);
     const navigate = useNavigate();
 
+    const [numItemsToShow, setNumItemsToShow] = useState(10);
+
     const handleNavigate = (item) => {
         const itemCopy = { ...item };
         navigate(`/merchandising/${itemCopy._id}`);
@@ -19,6 +21,20 @@ const MerchandisingSection = () => {
 
     useEffect(() => {
         dispatch(getMerch());
+    }, []);
+
+    useEffect(() => {
+        const handleResize = () => {
+            const newNumItemsToShow = window.innerWidth < 768 ? 5 : 10;
+            setNumItemsToShow(newNumItemsToShow);
+        };
+
+        window.addEventListener('resize', handleResize);
+        handleResize(); 
+
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
     }, []);
 
     return (
@@ -32,8 +48,8 @@ const MerchandisingSection = () => {
                             </Spinner>
                         ) : (
                             Array.isArray(merchandising) &&
-                            merchandising.slice(0, 10).map((merch) => (
-                                <Col lg={3} key={merch._id} md={4} sm={6} className='col-merch-img mb-5'>
+                            merchandising.slice(0, numItemsToShow).map((merch) => (
+                                <Col lg={3} md={4} sm={6} key={merch._id} className='col-merch-img mb-5'>
                                     <CardMerch merchData={merch} onClick={() => handleNavigate(merch)} />
                                 </Col>
                             ))

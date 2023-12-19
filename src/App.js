@@ -6,6 +6,7 @@ import Home from './Pages/Home';
 import ReservedPage from './Pages/Reserved Area/ReservedPage';
 import MerchandisingPage from './Pages/Mechandising/MerchandisingPage';
 import MerchandisingList from './Pages/Mechandising/MerchandisingList';
+import Policy from './Pages/PolicyPage/Policy';
 import PaymentsPage from './Pages/Payments/PaymentsPage';
 import LivesPage from './Pages/Lives/LivesPage';
 import Contacts from './Pages/Contacts/Contacts';
@@ -30,6 +31,7 @@ const App = () => {
                 <Route path="live" element={<LivesPage />} />
                 <Route path="purchase" element={<PaymentsPage />} />
                 <Route path="contacts" element={<Contacts/>} />
+                <Route path="policy" element={<Policy/>} />
                 <Route element={<ProtectedRoutes />}>
                     <Route path="reserved" element={<ReservedPage />} />
                 </Route>

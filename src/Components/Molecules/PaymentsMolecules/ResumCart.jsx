@@ -9,9 +9,6 @@ import './PaymentsMolecules.css'
 
 const ResumCart = () => {
     const cartPurchase = useSelector(selectPurchaseItems);
-
-    console.log(cartPurchase);
-
     return (
         <>
             <div className='container-resume-cart'>

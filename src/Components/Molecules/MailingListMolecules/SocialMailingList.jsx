@@ -2,7 +2,6 @@ import React from 'react';
 import CustomTitle from '../../Atoms/CustomTitle';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpotify, faInstagram, faFacebook, faTwitter, faYoutube } from '@fortawesome/free-brands-svg-icons';
-import CustomParagraph from '../../Atoms/CustomParagraph';
 import './MailingMolecules.css';
 
 const SocialMailingList = () => {

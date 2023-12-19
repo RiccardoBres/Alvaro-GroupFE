@@ -11,6 +11,3 @@ const CustomButton = ({ text, onClick, className }) => {
 
 export default CustomButton;
 
-{/*
- <CustomButton text="Clicca Qui" onClick={handleClick} className="****" />
- */}

@@ -20,7 +20,6 @@ export const getEmails = createAsyncThunk(
     }
 )
 
-
 export const addToMailing = createAsyncThunk(
     'newEmail/addNewEmail',
     async (email) => {
@@ -35,6 +34,20 @@ export const addToMailing = createAsyncThunk(
             return data;
         } catch (error) {
             throw new Error("Failed to create email");
+        }
+    }
+)
+
+export const unsubscribeFromMailing = createAsyncThunk(
+    'emails/unsubscribeFromMailing',
+    async (email) => {
+        try {
+            await axios.put(`${process.env.REACT_APP_SERVER_BASE_URL}/mailing-list/unsubscribe/${email}`);
+            const response = await axios.get(`${process.env.REACT_APP_SERVER_BASE_URL}/mailing-list`);
+            const data = response.data;
+            return data;
+        } catch (error) {
+            throw new Error("Failed to unsubscribe from mailing list");
         }
     }
 )
@@ -55,6 +68,17 @@ const CustomersSlice = createSlice({
                 state.isLoading = false;
                 state.error = "Failed to fetch emails";
             })
+            .addCase(unsubscribeFromMailing.pending, (state) => {
+                state.isLoading = true;
+            })
+            .addCase(unsubscribeFromMailing.fulfilled, (state, action) => {
+                state.isLoading = false;
+                state.email = action.payload;
+            })
+            .addCase(unsubscribeFromMailing.rejected, (state) => {
+                state.isLoading = false;
+                state.error = "Failed to unsubscribe from mailing list";
+            })
     },
 });
 
@@ -62,4 +86,4 @@ export const allEmail = (state) => state.mailingState.email;
 export const isMailingLoading = (state) => state.mailingState.isLoading;
 export const mailingError = (state) => state.mailingState.error;
 
-export default CustomersSlice.reducer; 
+export default CustomersSlice.reducer;

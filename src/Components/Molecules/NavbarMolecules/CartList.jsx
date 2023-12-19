@@ -21,10 +21,6 @@ const CartList = () => {
         dispatch(setCartClose());
         navigate('/purchase')
     }
-
-    useEffect(() => {
-        console.log(cartItems);
-    }, [cartItems]);
     return (
         <>
             <div className="container-carrel-list">

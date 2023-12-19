@@ -1,4 +1,5 @@
 import React, { useRef, useState } from 'react';
+import {useNavigate} from 'react-router-dom'
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import CustomInput from '../../Atoms/CustomInput';
 import CustomButton from '../../Atoms/CustomButton';
@@ -6,7 +7,7 @@ import { createPaymentIntent, isPaymentLoading, PaymentError } from '../../../St
 import { createCustomer } from '../../../States/CustomerState';
 import CryptoJS from 'crypto-js';
 import { Spinner } from 'react-bootstrap';
-import { selectPurchaseItems } from '../../../States/CarrelState';
+import { selectPurchaseItems, removeFromCart } from '../../../States/CarrelState';
 import { useDispatch, useSelector } from 'react-redux';
 import CustomParagrapher from '../../Atoms/CustomParagraph';
 import CustomTitle from '../../Atoms/CustomTitle';
@@ -19,6 +20,7 @@ emailjs.init(process.env.REACT_APP_USER_ID);
 const PaymentForm = () => {
     const stripe = useStripe();
     const elements = useElements();
+    const navigate = useNavigate();
     const dispatch = useDispatch();
     const cartPurchase = useSelector(selectPurchaseItems);
     const errorFromRedux = useSelector(PaymentError);
@@ -49,7 +51,12 @@ const PaymentForm = () => {
     const handleModalClose = () => {
         setModalSuccess(false);
         setModalError(false);
-        resetForm();
+        if(!modalError){
+            navigate('/');
+            resetForm();
+            dispatch(removeFromCart(cartPurchase[0]))
+            console.log(cartPurchase[0].id);
+        }
     };
 
     const handleTermsChange = () => {
@@ -132,10 +139,8 @@ const PaymentForm = () => {
                     process.env.REACT_APP_USER_ID
                 )
                     .then((response) => {
-                        console.log('SUCCESS!', response.status, response.text);
                     })
                     .catch((err) => {
-                        console.error('FAILED...', err);
                     });
                 setModalSuccess(true);
             }
@@ -144,7 +149,6 @@ const PaymentForm = () => {
             setModalError(true);
         }
     };
-
 
     return (
         <>

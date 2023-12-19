@@ -6,6 +6,3 @@ const CustomImage = ({ src, alt, className }) => {
 
 export default CustomImage;
 
-{/*
- <CustomImage src="/path-to-your-image.jpg" alt="Immagine personalizzata" className="******" />
- */}

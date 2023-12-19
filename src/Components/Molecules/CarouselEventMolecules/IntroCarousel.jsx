@@ -1,27 +1,31 @@
 import React from 'react';
 import CustomTitle from '../../Atoms/CustomTitle';
 import CustomParagraph from '../../Atoms/CustomParagraph';
-import '@fortawesome/free-brands-svg-icons'
-import { faTicket, faLocationArrow } from '@fortawesome/free-solid-svg-icons';
+import { faTicket, faLocationArrow, faCalendar } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import './EventCarousel.css'
+import './EventCarousel.css';
 
 const IntroCarousel = ({ eventsData, onClick, className }) => {
     const { name, date, location } = eventsData;
 
-    return (
-        <>
-            <div className={className}>
-                <CustomTitle text={name}/>
-                <CustomParagraph text={date} />
-                <div className="container-location">
-                    <FontAwesomeIcon icon={faLocationArrow} className="locationIcon" />
-                    <CustomParagraph text={location} />
-                </div>
-                <FontAwesomeIcon onClick={onClick} icon={faTicket} className="ticketIcon" />
-            </div>
-        </>
-    )
-}
+    const formatDate = (isoDate) => {
+        const options = { day: 'numeric', month: 'numeric', year: 'numeric' };
+        return new Date(isoDate).toLocaleDateString('it-IT', options);
+    };
 
-export default IntroCarousel
+    const formattedDate = formatDate(date);
+
+    return (
+        <div className="info-event">
+            <div className="container-location">
+                <CustomParagraph text={location} />
+            </div>
+            <div className="container-location">
+                <CustomParagraph text={formattedDate} />
+            </div>
+            <FontAwesomeIcon onClick={onClick} icon={faTicket} className="ticketIcon" />
+        </div>
+    );
+};
+
+export default IntroCarousel;

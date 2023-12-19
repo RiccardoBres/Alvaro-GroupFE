@@ -59,8 +59,7 @@ function MerchandiseForm() {
     dispatch(createMerch(formData));
     cleaner();
   
-    const toList = emails.mailingList.map(email => email.email);
-    console.log(toList);
+  if(!errorMerch){  const toList = emails.mailingList.map(email => email.email);
     toList.forEach(recipientEmail => {
       send(
         process.env.REACT_APP_SERVICE_ID,
@@ -69,12 +68,10 @@ function MerchandiseForm() {
         process.env.REACT_APP_USER_ID
       )
       .then((response) => {
-        console.log('SUCCESS!', response.status, response.text);
       })
       .catch((err) => {
-        console.error('FAILED...', err);
       });
-    });    
+    });    }
   };
   
 
@@ -88,9 +85,6 @@ function MerchandiseForm() {
   };
   useEffect(() => {
     dispatch(getEmails())
-    if (emails) {
-      console.log(emails.mailingList)
-    }
   }, [])
 
   return (

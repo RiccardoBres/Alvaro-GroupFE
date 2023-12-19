@@ -1,17 +1,16 @@
 import React from 'react';
 import { Col, Row, Container } from 'react-bootstrap';
+import './FooterOrganism.css'
+import InfoFooter from '../../Molecules/FooterMolecules/InfoFooter';
 import SocialIconsFooter from '../../Molecules/FooterMolecules/SocialIconsFooter';
 
 const Footer = () => {
     return (
-        <footer className="mt-auto bg-dark">
-            <Container fluid>
-                <Row>
-                    <Col lg={6} md={6} sm={6}>
-                        <SocialIconsFooter />
-                    </Col>
-                    <Col lg={6} md={6} sm={6}>
-                        <SocialIconsFooter />
+        <footer >
+            <Container fluid className="footer-page">
+                <Row className='w-100'>
+                    <Col lg={12} md={12} sm={12} className='col-footer'>
+                        <InfoFooter />
                     </Col>
                 </Row>
             </Container>

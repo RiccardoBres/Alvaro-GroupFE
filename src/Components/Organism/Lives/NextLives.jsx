@@ -6,12 +6,11 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper-bundle.css';
 import CustomTitle from '../../Atoms/CustomTitle';
 import { getEvents, allEvents, isLoading } from '../../../States/EventState';
-import IntroCarousel from '../../Molecules/CarouselEventMolecules/IntroCarousel';
+import Live from '../../Molecules/CarouselEventMolecules/Lives';
 import './Lives.css';
 import { faTicket } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import CustomParagraph from '../../Atoms/CustomParagraph';
-import CustomImage from '../../Atoms/CustomImage';
 import EventCarousel from '../../Molecules/CarouselEventMolecules/EventCarousel';
 
 const NextLives = () => {
@@ -43,14 +42,14 @@ const NextLives = () => {
                     <Col lg={12} md={12} sm={12}>
                         <>
                             <CustomTitle text='GROUP NAME' className='title' />
-                            <EventCarousel events={upcomingEvents} show={true} />
+                            <Live events={upcomingEvents} />
                         </>
                     </Col>
                 </Row>
             ) : upcomingEvents.length > 0 ? (
                 <Row>
                     <CustomTitle text='GROUP NAME' className='title mb-1' />
-                    <EventCarousel events={upcomingEvents} show={true} showInfo={false} />
+                    <Live events={upcomingEvents}/>
                 </Row>
             ) : (
                 <Row className='lives-no-element text-center'>

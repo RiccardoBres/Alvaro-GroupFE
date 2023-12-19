@@ -3,12 +3,12 @@ import Slider from 'react-slick';
 import IntroCarousel from '../CarouselEventMolecules/IntroCarousel';
 import CustomImage from '../../Atoms/CustomImage';
 import { Container } from 'react-bootstrap';
-import CustomTitle from '../../Atoms/CustomTitle';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import './EventCarousel.css';
+import CustomParagraph from '../../Atoms/CustomParagraph';
 
-const EventCarousel = ({ events }) => {
+const Live = ({ events }) => {
     const settings = {
         dots: true,
         infinite: true,
@@ -16,8 +16,6 @@ const EventCarousel = ({ events }) => {
         slidesToShow: 1,
         slidesToScroll: 1,
         arrows: true,
-        autoplay: true,
-        autoplaySpeed: 3000,
         responsive: [
             {
                 breakpoint: 1024,
@@ -43,14 +41,17 @@ const EventCarousel = ({ events }) => {
             <Slider {...settings}>
                 {events.map((event, index) => (
                     <div key={index} className="carousel-content">
-                        <CustomTitle text={event.name} />
                         <div className='intro-car-desci'>
                             <CustomImage
                                 src={event.image}
                                 alt={event.title}
                                 className="image-event"
                             />
-                            <IntroCarousel eventsData={event} />
+                            <div className="container-live-info">
+                                <CustomParagraph text={event.name} />
+                                <hr className='w-100'/>
+                                <CustomParagraph text={event.generalInfo} />
+                            </div>
                         </div>
                     </div>
                 ))}
@@ -59,4 +60,5 @@ const EventCarousel = ({ events }) => {
     );
 };
 
-export default EventCarousel;
+export default Live;
+

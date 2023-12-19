@@ -11,6 +11,3 @@ const CustomTitle = ({ text, className, onClick }) => {
 
 export default CustomTitle;
 
-{/* 
-<CustomTitle text="Questo è un titolo" className="****" />
- */}
