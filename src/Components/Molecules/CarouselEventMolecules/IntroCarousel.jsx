@@ -5,7 +5,7 @@ import { faTicket, faLocationArrow, faCalendar } from '@fortawesome/free-solid-s
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './EventCarousel.css';
 
-const IntroCarousel = ({ eventsData, onClick, className }) => {
+const IntroCarousel = ({ eventsData, onClick}) => {
     const { name, date, location } = eventsData;
 
     const formatDate = (isoDate) => {

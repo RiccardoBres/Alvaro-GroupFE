@@ -17,7 +17,7 @@ const EventCarousel = ({ events }) => {
         slidesToScroll: 1,
         arrows: true,
         autoplay: true,
-        autoplaySpeed: 3000,
+        autoplaySpeed: 5000,
         responsive: [
             {
                 breakpoint: 1024,
@@ -44,6 +44,7 @@ const EventCarousel = ({ events }) => {
                 {events.map((event, index) => (
                     <div key={index} className="carousel-content">
                         <CustomTitle text={event.name} />
+                        <hr className='w-100'/>
                         <div className='intro-car-desci'>
                             <CustomImage
                                 src={event.image}

@@ -49,7 +49,7 @@ const Live = ({ events }) => {
                             />
                             <div className="container-live-info">
                                 <CustomParagraph text={event.name} />
-                                <hr className='w-100'/>
+                                <hr className='w-100 m-0'/>
                                 <CustomParagraph text={event.generalInfo} />
                             </div>
                         </div>

@@ -7,17 +7,11 @@
 
 .center-carousel h2 {
   color: #7b6767;
-  font-size: 35px;
-  margin: 35px 0;
 }
 
 .image-event {
-  width: 100%;
+  width: 75%;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-}
-
-.image-event-page {
-  width: auto;
 }
 
 .intro-car-desci {
@@ -62,7 +56,7 @@
 
 @media (max-width: 450px) {
   .center-carousel {
-    width: 100%!important;
+    width: 75%!important;
   }
 
   .center-carousel h2 {
@@ -100,6 +94,8 @@
   width: 100%;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  margin-top: 25px;
   gap: 1rem;
   
 }
