@@ -8,7 +8,7 @@ const Footer = () => {
     return (
         <footer >
             <Container fluid className="footer-page">
-                <Row className='w-100'>
+                <Row className='w-100 m-0'>
                     <Col lg={12} md={12} sm={12} className='col-footer'>
                         <InfoFooter />
                     </Col>
