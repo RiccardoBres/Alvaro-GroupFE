@@ -4,7 +4,7 @@ const CustomParagraph = ({ text, className, onClick }) => {
   
   return (
     <p className={className} onClick={onClick}>
-      {text}
+      {text} 
     </p>
   );
 }

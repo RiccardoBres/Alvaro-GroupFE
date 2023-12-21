@@ -19,13 +19,14 @@
     flex-direction: column;
     align-items: center;
     color: white;
-    padding: 20px;
+    padding: 30px;
     text-align: center;
     gap: 0rem;
     font-size: 14px; 
 }
 .container-info-footer-last p{
     cursor: pointer;
+    margin: 0;
 }
 .container-info-footer-last :nth-child(2){
     text-decoration: underline;

@@ -18,10 +18,10 @@ const NavbarTitles = () => {
   return (
     <>
       <div className="container-titles-navbar">
-        <CustomParagraph onClick={handleHome} text="Home" className="title-nav" />
-        <CustomParagraph text="Merch" onClick={handleMerch} className="title-nav" />
-        <CustomParagraph text="Live" onClick={handleLive} className="title-nav" />
-        <CustomParagraph text="Contact" onClick={handleContacts} className="title-nav" />
+        <CustomParagraph onClick={handleHome} text="HOME" className="title-nav" />
+        <CustomParagraph text="MERCHANDISING" onClick={handleMerch} className="title-nav" />
+        <CustomParagraph text="LIVE" onClick={handleLive} className="title-nav" />
+        <CustomParagraph text="CONTACT" onClick={handleContacts} className="title-nav" />
         {session.isAuthenticated == true ? <CustomParagraph text='Logout' className="title-nav" onClick={handleLogout}/> : null }
       </div>
     </>
