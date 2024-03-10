@@ -24,8 +24,7 @@ const InfoFooter = () => {
     return (
         <>
             <div className='container-info-footer'>
-                <CustomParagraph text='Connect with us'/>
-                <CustomParagraph text='Come to our studio to say HI!'/>
+                <CustomParagraph text='Connect with us!'/>
                 <CustomParagraph text='Rua Duque de Loulè, 40, Porto, Portugal' />
             </div>
             <div className='container-image-footer'>
@@ -33,8 +32,8 @@ const InfoFooter = () => {
             </div>
             <div className='container-info-footer-last'>
                 <CustomParagraph text='To unsubscribe from our mailing list:'/>
-                <em className='m-0'  onClick={handleShow}>Click here!</em>
-                <CustomParagraph className='mt-2' text='Terms and Conditions' onClick={handlePolicy}/>
+                <CustomParagraph className='unsubscribe-link' text='Click here!' onClick={handleShow}/>
+                <CustomParagraph className='mt-2 unsubscribe-link' text='Terms and Conditions' onClick={handlePolicy}/>
                 <CustomParagraph text="Reserved Area" onClick={handleReservedArea} />
             </div>
             <ModalMailingList show={show} handleClose={handleClose} />

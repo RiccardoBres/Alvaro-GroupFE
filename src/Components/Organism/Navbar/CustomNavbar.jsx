@@ -57,7 +57,7 @@ const CustomNavbar = () => {
                     </Navbar.Collapse>
                     <Nav>
                         <Nav.Link eventKey={2} onClick={handleCartOpen}>
-                            <FontAwesomeIcon className='color-light' icon={faShoppingCart} />
+                            <FontAwesomeIcon className={`icon-cart ${scrolled ? 'color-light' : 'scrolled'}`} icon={faShoppingCart} />
                         </Nav.Link>
                     </Nav>
                 </Container>

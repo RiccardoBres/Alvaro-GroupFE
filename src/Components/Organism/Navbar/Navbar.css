@@ -2,9 +2,11 @@
     color: #fff;
     font-size: 25px;
 }
-.color-light:hover{
+
+.color-light:hover {
     border: none;
 }
+
 .nav-size {
     max-height: 3.35rem;
     width: 100%;
@@ -12,19 +14,23 @@
 
 
 .customNav {
+    color: black;
     position: fixed;
-    background: #251b1b;
+    background: transparent;
     z-index: 100;
-/*     background-color: transparent;
- */    transition: background 0.5s ease;
+    transition: all 0.5s ease;
 }
-.icon-cart{
+
+.icon-cart {
     font-size: 20px;
+    transition: all 0.5s ease;
 }
 
 .customNav.scrolled {
-    background: #251b1b;
+    background: #0c0909ce;
+    color: white;
 }
+
 /* Aggiungi questo CSS per l'animazione dell'icona hamburger */
 .navbar-toggler-icon {
     background: transparent;
@@ -48,5 +54,3 @@
     transform-origin: center;
 
 }
-
-

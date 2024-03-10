@@ -1,42 +1,46 @@
 .container-first-section {
-    height: 100vh;
-    background-image: url(https://c8.alamy.com/comp/RNR3E0/a-tribe-called-quest-can-i-kick-it-vintage-cover-album-RNR3E0.jpg);
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    background-position: 50% 50%;
-    max-height: 110vw;
-    background-size: 700px;
-    padding: 0;
- }
- .row-first-section{
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
- }
- .image-first-section{
-    width: 30%;
-    animation: rotateAnimation 1s linear;
- }
- @media(max-width:500px){
-    .image-first-section{
-        width: 60%!important;
-    }
- }
- .col-first-section{
-    display:flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
- }
- @keyframes rotateAnimation {
+   height: 100vh;
+   background-image: url(https://images.theconversation.com/files/512871/original/file-20230301-26-ryosag.jpg?ixlib=rb-1.1.0&rect=44%2C1211%2C5835%2C2917&q=45&auto=format&w=1356&h=668&fit=crop);
+
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: cover;
+   padding: 0;
+
+}
+
+.row-first-section {
+   width: 100%;
+   height: 100%;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+.image-first-section {
+   width: 30%;
+   animation: rotateAnimation 1s linear;
+}
+
+@media(max-width:500px) {
+   .image-first-section {
+      width: 60% !important;
+   }
+}
+
+.col-first-section {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   padding: 0;
+}
+
+@keyframes rotateAnimation {
    50% {
-     transform: rotate(0deg);
+      transform: rotate(0deg);
    }
-    100% {
-     transform: rotate(360deg);
+
+   100% {
+      transform: rotate(360deg);
    }
- }
- 
+}

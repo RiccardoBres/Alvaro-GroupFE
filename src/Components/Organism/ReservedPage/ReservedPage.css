@@ -1,23 +1,29 @@
 /* import './ReservedPage.css' */
 .reserved-page-container{
-    height: auto;
     min-height: 100vh;
-    width: auto;
     padding-bottom: 30px;
+    padding-top: 5rem;
 }
 
 .col-reserved-form{
     display: flex;
-    justify-content: center;
-    gap: 1rem;
+    justify-content: space-evenly;
 }
 .container-form col{
     display: flex;
 }
 input{
     height: 40%;
-    width: 80%;
+    width: 100%;
 }
 .form-control{
-    width: 85%!important;
+    width: 100%;
 }
+
+@media(max-width:650px){
+    .col-reserved-form{
+        display: flex;
+        justify-content: start;
+        flex-direction: column;
+    }
+  }

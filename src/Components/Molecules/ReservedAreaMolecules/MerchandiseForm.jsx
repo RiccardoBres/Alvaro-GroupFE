@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { FaPlus } from 'react-icons/fa';
+import { FaPlus, FaLessThan, FaMinus } from 'react-icons/fa';
+import { faLess } from '@fortawesome/free-brands-svg-icons';
 import CustomTitle from '../../Atoms/CustomTitle';
 import CustomButton from '../../Atoms/CustomButton';
 import './ReservedArea.css';
@@ -58,22 +59,24 @@ function MerchandiseForm() {
     e.preventDefault();
     dispatch(createMerch(formData));
     cleaner();
-  
-  if(!errorMerch){  const toList = emails.mailingList.map(email => email.email);
-    toList.forEach(recipientEmail => {
-      send(
-        process.env.REACT_APP_SERVICE_ID,
-        process.env.REACT_APP_TEMPLATE_ID,
-        { email: recipientEmail, merchandising: formData },
-        process.env.REACT_APP_USER_ID
-      )
-      .then((response) => {
-      })
-      .catch((err) => {
+
+    if (!errorMerch) {
+      const toList = emails.mailingList.map(email => email.email);
+      toList.forEach(recipientEmail => {
+        send(
+          process.env.REACT_APP_SERVICE_ID,
+          process.env.REACT_APP_TEMPLATE_ID,
+          { email: recipientEmail, merchandising: formData },
+          process.env.REACT_APP_USER_ID
+        )
+          .then((response) => {
+          })
+          .catch((err) => {
+          });
       });
-    });    }
+    }
   };
-  
+
 
 
   const handleClose = () => {
@@ -91,12 +94,19 @@ function MerchandiseForm() {
     <>
       <div className="merch-header">
         <div className="d-flex align-items-center gap-2">
-          <FaPlus size={30} onClick={handleIconClick} />
+          {
+            formVisible? (
+              <FaMinus size={30} onClick={handleIconClick} className='cursor-pointer' />
+            ) : (
+              <FaPlus size={30} onClick={handleIconClick} className='cursor-pointer' />
+            )
+          }
           <CustomTitle text="Add new merchandising" />
         </div>
         <hr />
         {formVisible && (
-          <form className='form' onSubmit={handleSubmit} encType="multipart/form-data">
+          <>
+           <form className='form' onSubmit={handleSubmit} encType="multipart/form-data">
             <div className="mb-3">
               <label htmlFor="merchName" className="form-label">Merch name</label>
               <input
@@ -140,7 +150,6 @@ function MerchandiseForm() {
                 onChange={handleChange}
               />
             </div>
-            <CustomButton text="Send" className="bn5" type="submit" />
             <div className="mb-3">
               <label htmlFor="merchInfo" className="form-label">Description</label>
               <textarea
@@ -152,7 +161,10 @@ function MerchandiseForm() {
                 onChange={handleChange}
               ></textarea>
             </div>
+            <CustomButton text="Send" className="bn5" type="submit" />
           </form>
+          </>
+         
         )}
       </div>
       <ErrorModal error={errorMerch} show={show} onHide={handleClose} />

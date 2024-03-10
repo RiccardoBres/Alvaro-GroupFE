@@ -8,8 +8,8 @@ import './ReservedPage.css'
 const HomeReservedPage = () => {
     return (
         <>
-            <Container fluid className='reserved-page-container pt-2'>
-                <Row className='w-100 mt-5'>
+            <Container fluid className='reserved-page-container'>
+                <Row>
                         <Col lg={6} md={6} sm={12} className='col-reserved-form'>
                             <EventForm />
                             <MerchandiseForm />

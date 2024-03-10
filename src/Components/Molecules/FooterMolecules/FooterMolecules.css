@@ -22,3 +22,8 @@
 .container-icon-footer .icons{
     margin: 5px;
 }
+.unsubscribe-link{
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: 12px;
+}

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Modal, Form } from 'react-bootstrap';
-import { loginUser } from '../../../States/LoginState';
+import { loginUser, } from '../../../States/LoginState';
 import CustomButton from '../../Atoms/CustomButton';
 import { useNavigate } from 'react-router-dom';
 
@@ -58,8 +58,8 @@ const ModalLogin = ({ showModal, setShowModal }) => {
                 </Form>
             </Modal.Body>
             <Modal.Footer>
+                <CustomButton variant="primary" onClick={handleLogin} text='Login' />
                 <CustomButton variant="secondary" onClick={handleClose} text="Close" />
-                <CustomButton variant="primary" onClick={handleLogin} text="Login" />
             </Modal.Footer>
         </Modal>
     );

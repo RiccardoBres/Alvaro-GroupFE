@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { FaPlus } from 'react-icons/fa';
+import { FaPlus, FaMinus } from 'react-icons/fa';
 import CustomTitle from '../../Atoms/CustomTitle';
 import CustomButton from '../../Atoms/CustomButton';
 import CustomInput from '../../Atoms/CustomInput';
@@ -94,8 +94,14 @@ function EventForm() {
     <>
       <div className="event-header">
         <div className="d-flex align-items-center gap-2">
-          <FaPlus size={30} onClick={handleIconClick} />
-          <CustomTitle text="Add new event" />
+          {
+            formVisible? (
+              <FaMinus size={30} onClick={handleIconClick} className='cursor-pointer' />
+            ) : (
+              <FaPlus size={30} onClick={handleIconClick} className='cursor-pointer' />
+            )
+          }
+          <CustomTitle text="Add new event"/>
         </div>
         <hr />
         <div className="form-container">

@@ -4,8 +4,12 @@
   box-sizing: border-box;
 }
 body{
-  background-image: url(https://media.istockphoto.com/id/1294763851/vector/empty-blank-light-cream-or-beige-coloured-grunge-textured-vector-backgrounds.jpg?s=612x612&w=0&k=20&c=EWS5Pi3yUrPlWxICASa0b1E5oNGDD58twPyLRFTKhco=);
   min-height: 100vh; 
-  background-repeat: no-repeat;
-  background-size: cover;
+  background-color: #F9F5F6!important;
+}
+h1, h2, h3, h4,h5 {
+  font-family: "Raleway", sans-serif!important;
+}
+p{
+  font-family: 'Open Sans', sans-serif;;
 }

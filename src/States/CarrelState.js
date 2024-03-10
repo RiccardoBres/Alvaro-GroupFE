@@ -17,7 +17,7 @@ const cartSlice = createSlice({
   },
   reducers: {
     addToCart: (state, action) => {
-      const { id, name, price, image, size} = action.payload;
+      const { id, name, price, image, size } = action.payload;
       const shippingCost = calculateShippingCost(price);
       const existingItem = state.cartItems.find((item) => item.id === id);
       if (existingItem) {
@@ -30,7 +30,7 @@ const cartSlice = createSlice({
           price,
           quantity: 1,
           shippingCost,
-          size
+          size,
         });
       }
       state.totalPrice += price;
@@ -59,12 +59,17 @@ const cartSlice = createSlice({
     removeFromCart: (state, action) => {
       const { id } = action.payload;
       const existingItem = state.cartItems.find((item) => item.id === id);
-      if (existingItem) {
+    
+      if (existingItem && existingItem.quantity > 0) {
         existingItem.quantity -= 1;
         state.totalItems -= 1;
-        state.totalPrice -= existingItem.price || 0;
+        state.totalPrice = Math.max(state.totalPrice - (existingItem.price || 0), 0);
+    
         if (existingItem.quantity === 0) {
           state.cartItems = state.cartItems.filter((item) => item.id !== id);
+        }
+        if (state.totalPrice === 0) {
+          state.totalItems = 0;
         }
       }
     },
@@ -84,7 +89,14 @@ const cartSlice = createSlice({
   },
 });
 
-export const { addToCart, removeFromCart, resetCart, setCartClose, setCartCOpen, addToPurchase } = cartSlice.actions;
+export const {
+  addToCart,
+  removeFromCart,
+  resetCart,
+  setCartClose,
+  setCartCOpen,
+  addToPurchase,
+} = cartSlice.actions;
 
 export const totalPrice = (state) => state.cartState.totalPrice;
 export const selectCartItems = (state) => state.cartState.cartItems;

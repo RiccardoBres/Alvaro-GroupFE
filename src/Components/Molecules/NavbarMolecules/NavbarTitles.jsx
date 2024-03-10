@@ -1,6 +1,6 @@
 import React from 'react';
 import './NavbarMolecules.css';
-import CustomParagraph from '../../Atoms/CustomParagraph';
+import CustomTitle from '../../Atoms/CustomTitle';
 import {useNavigate} from 'react-router-dom';
 import { useSession, logout } from '../../../Middleware/ProtectedRoutes';
 
@@ -18,11 +18,11 @@ const NavbarTitles = () => {
   return (
     <>
       <div className="container-titles-navbar">
-        <CustomParagraph onClick={handleHome} text="HOME" className="title-nav" />
-        <CustomParagraph text="MERCHANDISING" onClick={handleMerch} className="title-nav" />
-        <CustomParagraph text="LIVE" onClick={handleLive} className="title-nav" />
-        <CustomParagraph text="CONTACT" onClick={handleContacts} className="title-nav" />
-        {session.isAuthenticated == true ? <CustomParagraph text='Logout' className="title-nav" onClick={handleLogout}/> : null }
+        <CustomTitle onClick={handleHome} text="HOME" className="title-nav" />
+        <CustomTitle text="MERCHANDISING" onClick={handleMerch} className="title-nav" />
+        <CustomTitle text="LIVE" onClick={handleLive} className="title-nav" />
+        <CustomTitle text="CONTACT" onClick={handleContacts} className="title-nav" />
+        {session.isAuthenticated == true ? <CustomTitle text='Logout' className="title-nav" onClick={handleLogout}/> : null }
       </div>
     </>
   )
