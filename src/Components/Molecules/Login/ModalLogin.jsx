@@ -1,11 +1,12 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Modal, Form } from 'react-bootstrap';
-import { loginUser, } from '../../../States/LoginState';
+import { loginUser, loginLoading } from '../../../States/LoginState';
 import CustomButton from '../../Atoms/CustomButton';
 import { useNavigate } from 'react-router-dom';
 
 const ModalLogin = ({ showModal, setShowModal }) => {
+    const isLoading = useSelector((state)=> loginLoading.state);
     const dispatch = useDispatch();
     const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
@@ -58,7 +59,7 @@ const ModalLogin = ({ showModal, setShowModal }) => {
                 </Form>
             </Modal.Body>
             <Modal.Footer>
-                <CustomButton variant="primary" onClick={handleLogin} text='Login' />
+                <CustomButton variant="primary" onClick={handleLogin} text={isLoading ? 'Loading...' : 'Login'} />
                 <CustomButton variant="secondary" onClick={handleClose} text="Close" />
             </Modal.Footer>
         </Modal>
